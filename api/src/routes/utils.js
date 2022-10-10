@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Pokemon, Types } = require("../db");
+const { Pokemon, Type } = require("../db");
 
 const getInfoApi = async () => {
   try {
@@ -34,15 +34,16 @@ const getInfoApi = async () => {
 };
 
 const getInfoDb = async () => {
-  return await Pokemon.findAll({
+  const pokemonsDB = await Pokemon.findAll({
     include: {
-      model: Types,
+      model: Type,
       attributes: ["name"],
       through: {
         attributes: [],
       },
     },
   });
+  return pokemonsDB;
 };
 
 const getAllPokemons = async () => {
@@ -57,4 +58,5 @@ const getAllPokemons = async () => {
 };
 module.exports = {
   getAllPokemons,
+  getInfoDb,
 };
