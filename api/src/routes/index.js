@@ -24,7 +24,26 @@ router.get("/pokemons", async (req, res) => {
       res.status(200).send(allPokemons);
     }
   } catch (error) {
-    res.status(400).send("No se encuentra el pokemon");
+    res.status(400).json({ error: error.message });
+  }
+});
+
+router.get("/types", async (req, res) => {
+  try {
+    const allMyPokemons = await getAllPokemons();
+    const pokemonTypes = allMyPokemons.map((pokemon) => pokemon.types);
+    const myTypes = pokemonTypes.flat(); // Nuevo arreglo con los elem. de los sub arreglos concatenados -> [[1, 2], [3, 2]] -> [1, 2, 3, 2]
+    const mySetTypes = [...new Set(myTypes)]; // Me elimina los repetidos(set solo acepta valores unicos) -> [1, 2, 3, 2] -> [1, 2, 3]
+    // res.status(200).send(mySetTypes);
+
+    mySetTypes.forEach((type) => {
+      Type.findOrCreate({ where: { name: type } }); // Busca en la tabla type, en la columna name si tiene el type, sino lo crea.
+    });
+
+    const allTypes = await Type.findAll(); // Trae todos los datos de la tabla type.
+    res.status(200).send(allTypes);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 
