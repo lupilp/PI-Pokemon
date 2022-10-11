@@ -47,6 +47,33 @@ router.get("/types", async (req, res) => {
   }
 });
 
+router.post("/pokemons", async (req, res) => {
+  try {
+    const { name, hp, attack, defense, speed, height, weight, image, types } =
+      req.body;
+
+    const createPokemon = await Pokemon.create({
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      image,
+    });
+
+    const typeDb = await Type.findAll({
+      where: { name: types },
+    });
+
+    createPokemon.addType(typeDb);
+    res.status(200).send("Pokemon creado con exito");
+  } catch (error) {
+    console.log("entre al error del post", error);
+  }
+});
+
 // getAllPokemons();
 // getInfoDb();
 
