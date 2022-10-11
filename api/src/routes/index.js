@@ -74,7 +74,25 @@ router.post("/pokemons", async (req, res) => {
   }
 });
 
-// getAllPokemons();
+router.get("/pokemons/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const getById = await getAllPokemons();
+
+    if (id) {
+      const pokemonById = getById.filter(
+        (pokemon) => pokemon.id.toString() === id
+      );
+
+      if (pokemonById) res.status(200).json(pokemonById);
+    } else {
+      res.status(404).send("No se encontró");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 // getInfoDb();
 
 module.exports = router;
