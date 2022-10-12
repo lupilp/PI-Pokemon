@@ -43,7 +43,16 @@ const getInfoDb = async () => {
       },
     },
   });
-  return pokemonsDB;
+
+  const pokemonsMapeados = pokemonsDB?.map((pokemon) => {
+    const { types } = pokemon;
+    const pokemonData = {
+      ...pokemon.dataValues,
+      types: types.map((t) => t.name),
+    };
+    return pokemonData;
+  });
+  return pokemonsMapeados;
 };
 
 const getAllPokemons = async () => {
