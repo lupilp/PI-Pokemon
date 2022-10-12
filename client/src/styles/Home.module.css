@@ -1,0 +1,7 @@
+.contCards {
+    border: 1px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}

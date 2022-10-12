@@ -1,0 +1,15 @@
+.contCard {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 200px;
+}
+
+.img {
+    width: 50%;
+
+}
+
