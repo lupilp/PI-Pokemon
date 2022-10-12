@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const GET_POKEMONS = "GET_POKEMONS";
+export const GET_POKEMONS = "GET_POKEMONS";
 
 export function getPokemons() {
   return async function (dispatch) {
