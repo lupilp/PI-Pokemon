@@ -7,6 +7,7 @@ export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const RESET_POKEMONS = "RESET_POKEMONS";
+export const GET_TYPES = "GET_TYPES";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -56,5 +57,15 @@ export function setCurrentPage(payload) {
 export function resetPokemons() {
   return {
     type: RESET_POKEMONS,
+  };
+}
+
+export function getTypes() {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/types");
+    return dispatch({
+      type: GET_TYPES,
+      payload: json.data,
+    });
   };
 }

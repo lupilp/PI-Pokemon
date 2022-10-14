@@ -8,20 +8,20 @@ import {
   orderByName,
   orderByAttack,
   resetPokemons,
+  getTypes,
 } from "../actions";
 import { Link } from "react-router-dom";
-import Card from "./Card";
 import styles from "../styles/Home.module.css";
 import Paginado from "./Paginado";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allPokemons = useSelector((state) => state.pokemons);
 
-  const [order, setorder] = useState("");
+  const allTypes = useSelector((state) => state.types);
 
   useEffect(() => {
     dispatch(getPokemons());
+    dispatch(getTypes());
   }, [dispatch]);
 
   function handleClick(ev) {
@@ -30,7 +30,12 @@ export default function Home() {
   }
 
   function handleFilterType(ev) {
-    dispatch(filterByType(ev.target.value));
+    if (ev.target.value === "all") {
+      ev.preventDefault();
+      dispatch(resetPokemons());
+    } else {
+      dispatch(filterByType(ev.target.value));
+    }
     // dispatch(setCurrentPage(1)); esta es otra forma de solucionar lo del setcurrentpage
   }
 
@@ -50,12 +55,10 @@ export default function Home() {
     if (ev.target.value === "asc" || ev.target.value === "desc") {
       ev.preventDefault();
       dispatch(orderByName(ev.target.value));
-      setorder(`Ordenado ${ev.target.value}`);
     }
     if (ev.target.value === "fue" || ev.target.value === "deb") {
       ev.preventDefault();
       dispatch(orderByAttack(ev.target.value));
-      setorder(`Ordenado ${ev.target.value}`);
     }
 
     if (ev.target.value === "default") {
@@ -93,29 +96,15 @@ export default function Home() {
 
         <select onChange={(e) => handleFilterType(e)}>
           <option value="all">All</option>
-          <option value="grass">Grass</option>
-          <option value="poison">Poison</option>
-          <option value="fire">Fire</option>
-          <option value="flying">Flying</option>
-          <option value="water">Water</option>
-          <option value="bug">Bug</option>
-          <option value="normal">Normal</option>
-          <option value="electric">Electric</option>
-          <option value="ground">Ground</option>
+          {allTypes.map((t) => {
+            return (
+              <option value={t.name} key={t.name}>
+                {t.name[0].toUpperCase() + t.name.slice(1)}
+              </option>
+            );
+          })}
         </select>
       </div>
-      {/* <div className={styles.contCards}>
-        {allPokemons.length ? (
-          allPokemons.map((p) => {
-            return (
-              <Card name={p.name} image={p.image} types={p.types} key={p.id} />
-            );
-          })
-        ) : (
-          <div>Cargando...</div>
-        )}
-      </div> */}
-
       <div>
         <Paginado></Paginado>
       </div>

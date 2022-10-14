@@ -6,12 +6,14 @@ import {
   ORDER_BY_ATTACK,
   SET_CURRENT_PAGE,
   RESET_POKEMONS,
+  GET_TYPES,
 } from "../actions";
 
 const initialState = {
   pokemons: [],
   allPokemons: [],
   currentPage: 1,
+  types: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -115,6 +117,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: allPokemonitos,
+      };
+
+    case GET_TYPES:
+      return {
+        ...state,
+        types: action.payload,
       };
 
     default:
