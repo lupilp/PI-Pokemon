@@ -1,7 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../actions";
+import {
+  getPokemons,
+  filterByType,
+  filterCreated,
+  orderByName,
+  orderByAttack,
+} from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import styles from "../styles/Home.module.css";
@@ -11,6 +17,9 @@ export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
 
+  const [currentPage, setcurrentPage] = useState(1);
+  const [order, setorder] = useState("");
+
   useEffect(() => {
     dispatch(getPokemons());
   }, [dispatch]);
@@ -18,6 +27,28 @@ export default function Home() {
   function handleClick(ev) {
     ev.preventDefault();
     dispatch(getPokemons());
+  }
+
+  function handleFilterType(ev) {
+    dispatch(filterByType(ev.target.value));
+  }
+
+  function handleFilterCreated(ev) {
+    dispatch(filterCreated(ev.target.value));
+  }
+
+  function handleOrderByName(ev) {
+    ev.preventDefault();
+    dispatch(orderByName(ev.target.value));
+    setcurrentPage(1);
+    setorder(`Ordenado ${ev.target.value}`);
+  }
+
+  function handleOrderByAttack(ev) {
+    ev.preventDefault();
+    dispatch(orderByAttack(ev.target.value));
+    setcurrentPage(1);
+    setorder(`Ordenado ${ev.target.value}`);
   }
 
   return (
@@ -33,22 +64,23 @@ export default function Home() {
       </button>
 
       <div className={styles.filters}>
-        <select>
+        <select onChange={(e) => handleOrderByName(e)}>
           <option value="asc">Ascendente A-Z</option>
           <option value="desc">Descendente Z-A</option>
         </select>
 
-        <select>
+        <select onChange={(e) => handleOrderByAttack(e)}>
           <option value="fue">Fuerte</option>
           <option value="deb">Debil</option>
         </select>
 
-        <select>
-          <option value="todos">Todos</option>
-          <option value="creados">Creados</option>
+        <select onChange={(e) => handleFilterCreated(e)}>
+          <option value="existing">Existing</option>
+          <option value="created">Created</option>
         </select>
 
-        <select>
+        <select onChange={(e) => handleFilterType(e)}>
+          <option value="all">All</option>
           <option value="grass">Grass</option>
           <option value="poison">Poison</option>
           <option value="fire">Fire</option>

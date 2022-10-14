@@ -13,7 +13,11 @@ function Paginado() {
   const allPokemons = useSelector((state) => state.pokemons);
 
   const [currentPage, setcurrentPage] = useState(1);
-  const [pokemonsPerPage, setpokemonsPerPage] = useState(12);
+  const [pokemonsPerPage] = useState(12);
+
+  const [pageNumLimit] = useState(4);
+  const [maxPageNum] = useState(4);
+  const [minPageNum] = useState(0);
 
   const handleClick = (ev) => {
     setcurrentPage(Number(ev.target.id));
@@ -33,16 +37,48 @@ function Paginado() {
   );
 
   const pageNumbers = pages.map((numbers) => {
-    return (
-      <li key={numbers} id={numbers} onClick={handleClick}>
-        {numbers}
-      </li>
-    );
+    if (numbers < maxPageNum + 1 && numbers > minPageNum) {
+      return (
+        <li
+          key={numbers}
+          id={numbers}
+          onClick={handleClick}
+          className={currentPage === numbers ? styles.active : null}
+        >
+          {numbers}
+        </li>
+      );
+    } else {
+      return null;
+    }
   });
+
+  const handleNext = () => {
+    // setcurrentPage(currentPage + 1);
+
+    if (currentPage + 1 <= pageNumLimit) {
+      //   setmaxPageNum(maxPageNum + pageNumLimit);
+      //   setminPageNum(minPageNum + pageNumLimit);
+      setcurrentPage(currentPage + 1);
+    } else {
+      return null;
+    }
+  };
+
+  const handlePrev = () => {
+    // setcurrentPage(currentPage - 1);
+
+    if ((currentPage - 1) % pageNumLimit !== 0) {
+      //   setmaxPageNum(maxPageNum - pageNumLimit);
+      //   setminPageNum(minPageNum - pageNumLimit);
+      setcurrentPage(currentPage - 1);
+    } else {
+      return null;
+    }
+  };
 
   return (
     <>
-      <ul className={styles.pageNumbers}>{pageNumbers}</ul>
       <div className={styles.contCards}>
         {allPokemons.length ? (
           renderData(currentPokemons)
@@ -50,6 +86,17 @@ function Paginado() {
           <div>Cargando...</div>
         )}
       </div>
+      <ul className={styles.pageNumbers}>
+        <li>
+          <button onClick={handlePrev}>Prev</button>
+        </li>
+
+        {pageNumbers}
+
+        <li>
+          <button onClick={handleNext}>Next</button>
+        </li>
+      </ul>
     </>
   );
 }

@@ -1,17 +1,40 @@
 .contCards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .pageNumbers {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
 .pageNumbers li {
-    padding: 10px;
-    border: 1px solid black;
-    cursor: pointer;
+  padding: 10px;
+  /* border: 1px solid black; */
+  cursor: pointer;
+}
+
+.pageNumbers li.active {
+  background-color: black;
+  color: white;
+}
+
+.pageNumbers li button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pageNumbers li button:hover {
+  background-color: black;
+  color: white;
+}
+
+.pageNumbers li button:focus {
+  outline: none;
 }
