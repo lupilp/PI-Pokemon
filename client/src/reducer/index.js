@@ -5,6 +5,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_ATTACK,
   SET_CURRENT_PAGE,
+  RESET_POKEMONS,
 } from "../actions";
 
 const initialState = {
@@ -48,7 +49,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case ORDER_BY_NAME:
-      const allPokes = state.allPokemons;
+      const allPokes = [...state.pokemons];
       const sortedPokemon =
         action.payload === "asc"
           ? allPokes.sort(function (a, b) {
@@ -76,7 +77,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case ORDER_BY_ATTACK:
-      const allPoke = state.allPokemons;
+      const allPoke = [...state.pokemons];
       const sortedPokemonAttack =
         action.payload === "fue"
           ? allPoke.sort(function (a, b) {
@@ -107,6 +108,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         currentPage: action.payload,
+      };
+
+    case RESET_POKEMONS:
+      const allPokemonitos = state.allPokemons;
+      return {
+        ...state,
+        pokemons: allPokemonitos,
       };
 
     default:

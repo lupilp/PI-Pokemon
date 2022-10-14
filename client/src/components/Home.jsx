@@ -7,6 +7,7 @@ import {
   filterCreated,
   orderByName,
   orderByAttack,
+  resetPokemons,
 } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -34,7 +35,15 @@ export default function Home() {
   }
 
   function handleFilterCreated(ev) {
-    dispatch(filterCreated(ev.target.value));
+    if (ev.target.value === "existing" || ev.target.value === "created") {
+      ev.preventDefault();
+      dispatch(filterCreated(ev.target.value));
+    }
+
+    if (ev.target.value === "all") {
+      ev.preventDefault();
+      dispatch(resetPokemons());
+    }
   }
 
   function handleOrder(ev) {
@@ -48,13 +57,12 @@ export default function Home() {
       dispatch(orderByAttack(ev.target.value));
       setorder(`Ordenado ${ev.target.value}`);
     }
-  }
 
-  // function handleOrderByAttack(ev) {
-  //   ev.preventDefault();
-  //   dispatch(orderByAttack(ev.target.value));
-  //   setorder(`Ordenado ${ev.target.value}`);
-  // }
+    if (ev.target.value === "default") {
+      ev.preventDefault();
+      dispatch(resetPokemons());
+    }
+  }
 
   return (
     <div>
@@ -69,12 +77,8 @@ export default function Home() {
       </button>
 
       <div className={styles.filters}>
-        {/* <select onChange={(e) => handleOrderByName(e)}>
-          <option value="asc">Ascendente A-Z</option>
-          <option value="desc">Descendente Z-A</option>
-        </select> */}
-
         <select onChange={(e) => handleOrder(e)}>
+          <option value="default">Order</option>
           <option value="asc">Ascendente A-Z</option>
           <option value="desc">Descendente Z-A</option>
           <option value="fue">Fuerte</option>
@@ -82,6 +86,7 @@ export default function Home() {
         </select>
 
         <select onChange={(e) => handleFilterCreated(e)}>
+          <option value="all">All</option>
           <option value="existing">Existing</option>
           <option value="created">Created</option>
         </select>
