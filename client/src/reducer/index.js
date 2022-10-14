@@ -4,11 +4,13 @@ import {
   FILTER_CREATED,
   ORDER_BY_NAME,
   ORDER_BY_ATTACK,
+  SET_CURRENT_PAGE,
 } from "../actions";
 
 const initialState = {
   pokemons: [],
   allPokemons: [],
+  currentPage: 1,
 };
 
 function rootReducer(state = initialState, action) {
@@ -95,6 +97,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: sortedPokemonAttack,
+      };
+
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       };
 
     default:

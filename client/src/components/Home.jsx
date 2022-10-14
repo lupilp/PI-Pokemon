@@ -40,14 +40,12 @@ export default function Home() {
   function handleOrderByName(ev) {
     ev.preventDefault();
     dispatch(orderByName(ev.target.value));
-    setcurrentPage(1);
     setorder(`Ordenado ${ev.target.value}`);
   }
 
   function handleOrderByAttack(ev) {
     ev.preventDefault();
     dispatch(orderByAttack(ev.target.value));
-    setcurrentPage(1);
     setorder(`Ordenado ${ev.target.value}`);
   }
 

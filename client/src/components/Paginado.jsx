@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import styles from "../styles/Paginado.module.css";
+import { setCurrentPage } from "../actions";
 
 const renderData = (data) => {
   return data.map((p) => {
@@ -10,13 +11,16 @@ const renderData = (data) => {
 };
 
 function Paginado() {
+  const dispatch = useDispatch();
+
   const allPokemons = useSelector((state) => state.pokemons);
 
-  const [currentPage, setcurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.currentPage);
+
   const [pokemonsPerPage] = useState(12);
 
   const handleClick = (ev) => {
-    setcurrentPage(Number(ev.target.id));
+    dispatch(setCurrentPage(Number(ev.target.id)));
   };
 
   const pages = [];
@@ -47,7 +51,7 @@ function Paginado() {
 
   const handleNext = () => {
     if (currentPage + 1 <= pages.length) {
-      setcurrentPage(currentPage + 1);
+      dispatch(setCurrentPage(currentPage + 1));
     } else {
       return null;
     }
@@ -55,7 +59,7 @@ function Paginado() {
 
   const handlePrev = () => {
     if (currentPage - 1 >= 1) {
-      setcurrentPage(currentPage - 1);
+      dispatch(setCurrentPage(currentPage - 1));
     } else {
       return null;
     }
