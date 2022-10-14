@@ -17,7 +17,6 @@ export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
 
-  const [currentPage, setcurrentPage] = useState(1);
   const [order, setorder] = useState("");
 
   useEffect(() => {
@@ -31,6 +30,7 @@ export default function Home() {
 
   function handleFilterType(ev) {
     dispatch(filterByType(ev.target.value));
+    // dispatch(setCurrentPage(1)); esta es otra forma de solucionar lo del setcurrentpage
   }
 
   function handleFilterCreated(ev) {

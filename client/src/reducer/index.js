@@ -31,6 +31,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: typesFiltered,
+        currentPage: 1,
       };
 
     case FILTER_CREATED:
@@ -43,6 +44,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: createdFilter,
+        currentPage: 1,
       };
 
     case ORDER_BY_NAME:
@@ -70,6 +72,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: sortedPokemon,
+        currentPage: 1,
       };
 
     case ORDER_BY_ATTACK:
@@ -97,6 +100,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: sortedPokemonAttack,
+        currentPage: 1,
       };
 
     case SET_CURRENT_PAGE:
