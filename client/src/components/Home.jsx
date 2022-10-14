@@ -37,17 +37,24 @@ export default function Home() {
     dispatch(filterCreated(ev.target.value));
   }
 
-  function handleOrderByName(ev) {
-    ev.preventDefault();
-    dispatch(orderByName(ev.target.value));
-    setorder(`Ordenado ${ev.target.value}`);
+  function handleOrder(ev) {
+    if (ev.target.value === "asc" || ev.target.value === "desc") {
+      ev.preventDefault();
+      dispatch(orderByName(ev.target.value));
+      setorder(`Ordenado ${ev.target.value}`);
+    }
+    if (ev.target.value === "fue" || ev.target.value === "deb") {
+      ev.preventDefault();
+      dispatch(orderByAttack(ev.target.value));
+      setorder(`Ordenado ${ev.target.value}`);
+    }
   }
 
-  function handleOrderByAttack(ev) {
-    ev.preventDefault();
-    dispatch(orderByAttack(ev.target.value));
-    setorder(`Ordenado ${ev.target.value}`);
-  }
+  // function handleOrderByAttack(ev) {
+  //   ev.preventDefault();
+  //   dispatch(orderByAttack(ev.target.value));
+  //   setorder(`Ordenado ${ev.target.value}`);
+  // }
 
   return (
     <div>
@@ -62,12 +69,14 @@ export default function Home() {
       </button>
 
       <div className={styles.filters}>
-        <select onChange={(e) => handleOrderByName(e)}>
+        {/* <select onChange={(e) => handleOrderByName(e)}>
           <option value="asc">Ascendente A-Z</option>
           <option value="desc">Descendente Z-A</option>
-        </select>
+        </select> */}
 
-        <select onChange={(e) => handleOrderByAttack(e)}>
+        <select onChange={(e) => handleOrder(e)}>
+          <option value="asc">Ascendente A-Z</option>
+          <option value="desc">Descendente Z-A</option>
           <option value="fue">Fuerte</option>
           <option value="deb">Debil</option>
         </select>
