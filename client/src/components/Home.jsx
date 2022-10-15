@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 import Paginado from "./Paginado";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -78,6 +79,8 @@ export default function Home() {
       >
         Volver a mostrar pokemons
       </button>
+
+      <SearchBar></SearchBar>
 
       <div className={styles.filters}>
         <select onChange={(e) => handleOrder(e)}>

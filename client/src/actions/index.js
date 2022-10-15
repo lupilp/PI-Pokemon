@@ -8,6 +8,8 @@ export const ORDER_BY_ATTACK = "ORDER_BY_ATTACK";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const RESET_POKEMONS = "RESET_POKEMONS";
 export const GET_TYPES = "GET_TYPES";
+export const GET_NAME_POKEMON = "GET_NAME_POKEMON";
+export const POST_POKEMON = "POST_POKEMON";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -65,6 +67,25 @@ export function getTypes() {
     const json = await axios.get("http://localhost:3001/types");
     return dispatch({
       type: GET_TYPES,
+      payload: json.data,
+    });
+  };
+}
+
+export function postPokemon(payload) {
+  return async function (dispatch) {
+    const json = await axios.post("http://localhost:3001/pokemons", payload);
+    return json;
+  };
+}
+
+export function getNamePokemon(payload) {
+  return async function (dispatch) {
+    const json = await axios.get(
+      `http://localhost:3001/pokemons?name=${payload}`
+    );
+    return dispatch({
+      type: GET_NAME_POKEMON,
       payload: json.data,
     });
   };

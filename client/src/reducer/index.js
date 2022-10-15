@@ -7,6 +7,8 @@ import {
   SET_CURRENT_PAGE,
   RESET_POKEMONS,
   GET_TYPES,
+  GET_NAME_POKEMON,
+  POST_POKEMON,
 } from "../actions";
 
 const initialState = {
@@ -123,6 +125,17 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         types: action.payload,
+      };
+
+    case GET_NAME_POKEMON:
+      return {
+        ...state,
+        pokemons: action.payload,
+      };
+
+    case POST_POKEMON:
+      return {
+        ...state,
       };
 
     default:
