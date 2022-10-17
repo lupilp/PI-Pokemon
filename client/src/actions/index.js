@@ -81,12 +81,16 @@ export function postPokemon(payload) {
 
 export function getNamePokemon(payload) {
   return async function (dispatch) {
-    const json = await axios.get(
-      `http://localhost:3001/pokemons?name=${payload}`
-    );
-    return dispatch({
-      type: GET_NAME_POKEMON,
-      payload: json.data,
-    });
+    try {
+      const json = await axios.get(
+        `http://localhost:3001/pokemons?name=${payload}`
+      );
+      return dispatch({
+        type: GET_NAME_POKEMON,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log("NO ENCONTRÉ NINGUN POKEMON");
+    }
   };
 }
