@@ -26,7 +26,6 @@ function CreatePokemon() {
   }, [dispatch]);
 
   const handleChange = (ev) => {
-    ev.preventDefault();
     setInput({
       ...input,
       [ev.target.name]: ev.target.value,
@@ -57,6 +56,13 @@ function CreatePokemon() {
     });
 
     history.push("/home");
+  };
+
+  const handleDeleteType = (ev) => {
+    setInput({
+      ...input,
+      types: input.types.filter((t) => t !== ev),
+    });
   };
 
   return (
@@ -160,7 +166,11 @@ function CreatePokemon() {
 
           <ul>
             {input.types.map((t) => {
-              return <li key={t}>{t}</li>;
+              return (
+                <li key={t}>
+                  {t} <button onClick={() => handleDeleteType(t)}>X</button>
+                </li>
+              );
             })}
           </ul>
         </div>
