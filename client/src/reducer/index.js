@@ -10,6 +10,7 @@ import {
   GET_NAME_POKEMON,
   POST_POKEMON,
   GET_DETAIL,
+  CLEAR_DETAIL,
 } from "../actions";
 
 const initialState = {
@@ -145,6 +146,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: action.payload,
+      };
+
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        detail: [],
       };
 
     default:

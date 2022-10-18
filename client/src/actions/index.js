@@ -11,6 +11,7 @@ export const GET_TYPES = "GET_TYPES";
 export const GET_NAME_POKEMON = "GET_NAME_POKEMON";
 export const POST_POKEMON = "POST_POKEMON";
 export const GET_DETAIL = "GET_DETAIL";
+export const CLEAR_DETAIL = "CLEAR_DETAIL";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -105,7 +106,13 @@ export function getDetail(payload) {
         payload: json.data,
       });
     } catch (error) {
-      console.log("NO TENGO EL DETAIL");
+      console.log("NO TENGO EL DETAIL", error);
     }
+  };
+}
+
+export function clearDetail() {
+  return {
+    type: CLEAR_DETAIL,
   };
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getPokemons,
@@ -17,12 +17,15 @@ import SearchBar from "./SearchBar";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const allPokemons = useSelector((state) => state.pokemons);
 
   const allTypes = useSelector((state) => state.types);
 
   useEffect(() => {
-    dispatch(getPokemons());
-    dispatch(getTypes());
+    if (!allPokemons.length) {
+      dispatch(getPokemons());
+      dispatch(getTypes());
+    }
   }, [dispatch]);
 
   function handleClick(ev) {

@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../actions";
+import { clearDetail, getDetail } from "../actions";
 
-function Details(props) {
+function Details() {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDetail(props.match.params.id));
-  }, [dispatch]);
+  const { id } = useParams();
 
   const pokemonDetail = useSelector((state) => state.detail);
+
+  useEffect(() => {
+    dispatch(getDetail(id));
+    dispatch(clearDetail());
+  }, [dispatch, id]);
+
   return (
     <div>
       <h1>Ruta Detalles</h1>

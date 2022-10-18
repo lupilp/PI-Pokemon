@@ -53,8 +53,18 @@ router.get("/types", async (req, res) => {
 
 router.post("/pokemons", async (req, res) => {
   try {
-    const { name, hp, attack, defense, speed, height, weight, image, types } =
-      req.body;
+    const {
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      image,
+      types,
+      createdInDb,
+    } = req.body;
 
     const createPokemon = await Pokemon.create({
       name,
@@ -65,6 +75,7 @@ router.post("/pokemons", async (req, res) => {
       height,
       weight,
       image,
+      createdInDb,
     });
 
     const typeDb = await Type.findAll({
@@ -88,9 +99,15 @@ router.get("/pokemons/:id", async (req, res) => {
         (pokemon) => pokemon.id.toString() === id
       );
 
-      if (pokemonById) res.status(200).json(pokemonById);
+      if (pokemonById) {
+        res.status(200).json(pokemonById);
+      } else {
+        res
+          .status(404)
+          .send("No se encontró ningun pokemon en all pokemons con el id");
+      }
     } else {
-      res.status(404).send("No se encontró");
+      res.status(404).send("No se encontró el id por params");
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
