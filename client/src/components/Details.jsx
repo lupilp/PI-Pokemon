@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { clearDetail, getDetail } from "../actions";
+import { getDetail, getDetailFromState } from "../actions";
 
 function Details() {
   const dispatch = useDispatch();
@@ -9,10 +9,15 @@ function Details() {
 
   const pokemonDetail = useSelector((state) => state.detail);
 
+  const allPokemons = useSelector((state) => state.pokemons);
+
   useEffect(() => {
-    dispatch(getDetail(id));
-    dispatch(clearDetail());
-  }, [dispatch, id]);
+    if (allPokemons.length) {
+      dispatch(getDetailFromState(id));
+    } else {
+      dispatch(getDetail(id));
+    }
+  }, [dispatch, id, allPokemons.length]);
 
   return (
     <div>
@@ -29,7 +34,7 @@ function Details() {
           <div>{pokemonDetail[0].weight}</div>
           <ul>
             {pokemonDetail[0].types.map((t) => (
-              <li>{t}</li>
+              <li key={pokemonDetail[0].name + t}>{t}</li>
             ))}
           </ul>
         </div>

@@ -9,6 +9,7 @@ import {
   orderByAttack,
   resetPokemons,
   getTypes,
+  clearDetail,
 } from "../actions";
 import { Link } from "react-router-dom";
 import styles from "../styles/Home.module.css";
@@ -18,6 +19,7 @@ import SearchBar from "./SearchBar";
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
+  const pokemonDetail = useSelector((state) => state.detail);
 
   const allTypes = useSelector((state) => state.types);
 
@@ -26,7 +28,8 @@ export default function Home() {
       dispatch(getPokemons());
       dispatch(getTypes());
     }
-  }, [dispatch]);
+    pokemonDetail.length && dispatch(clearDetail());
+  }, [dispatch, allPokemons.length, pokemonDetail.length]);
 
   function handleClick(ev) {
     ev.preventDefault();

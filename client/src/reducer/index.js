@@ -11,6 +11,7 @@ import {
   POST_POKEMON,
   GET_DETAIL,
   CLEAR_DETAIL,
+  GET_DETAIL_FROM_STATE,
 } from "../actions";
 
 const initialState = {
@@ -146,6 +147,16 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: action.payload,
+      };
+
+    case GET_DETAIL_FROM_STATE:
+      const todosLosPokemon = [...state.allPokemons];
+      const detallesPokemon = todosLosPokemon.filter(
+        (p) => p.id.toString() === action.payload
+      );
+      return {
+        ...state,
+        detail: detallesPokemon,
       };
 
     case CLEAR_DETAIL:
