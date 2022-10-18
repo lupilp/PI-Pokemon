@@ -6,7 +6,15 @@ import { setCurrentPage } from "../actions";
 
 const renderData = (data) => {
   return data.map((p) => {
-    return <Card name={p.name} image={p.image} types={p.types} key={p.id} />;
+    return (
+      <Card
+        name={p.name}
+        image={p.image}
+        types={p.types}
+        key={p.id}
+        id={p.id}
+      />
+    );
   });
 };
 

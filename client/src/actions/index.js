@@ -10,6 +10,7 @@ export const RESET_POKEMONS = "RESET_POKEMONS";
 export const GET_TYPES = "GET_TYPES";
 export const GET_NAME_POKEMON = "GET_NAME_POKEMON";
 export const POST_POKEMON = "POST_POKEMON";
+export const GET_DETAIL = "GET_DETAIL";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -91,6 +92,20 @@ export function getNamePokemon(payload) {
       });
     } catch (error) {
       console.log("NO ENCONTRÉ NINGUN POKEMON");
+    }
+  };
+}
+
+export function getDetail(payload) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`http://localhost:3001/pokemons/${payload}`);
+      return dispatch({
+        type: GET_DETAIL,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log("NO TENGO EL DETAIL");
     }
   };
 }

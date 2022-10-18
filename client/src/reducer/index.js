@@ -9,6 +9,7 @@ import {
   GET_TYPES,
   GET_NAME_POKEMON,
   POST_POKEMON,
+  GET_DETAIL,
 } from "../actions";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   allPokemons: [],
   currentPage: 1,
   types: [],
+  detail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -136,6 +138,12 @@ function rootReducer(state = initialState, action) {
     case POST_POKEMON:
       return {
         ...state,
+      };
+
+    case GET_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     default:
