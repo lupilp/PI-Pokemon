@@ -121,6 +121,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: allPokemonitos,
+        currentPage: 1,
       };
 
     case GET_TYPES:
