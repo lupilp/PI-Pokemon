@@ -1,12 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { getTypes, postPokemon } from "../actions";
+import { getPokemons, getTypes, postPokemon } from "../actions";
 
 function validate(input) {
   const errors = {};
   if (!input.name || input.name.length < 3) {
     errors.name = "Se requiere un nombre de mas de tres letras";
+  }
+
+  if (!input.hp || input.hp < 0 || input.hp > 100) {
+    errors.hp = "Valor maximo 100";
+  }
+
+  if (!input.attack || input.attack < 0 || input.attack > 100) {
+    errors.attack = "Valor maximo 100";
+  }
+
+  if (!input.defense || input.defense < 0 || input.defense > 100) {
+    errors.defense = "Valor maximo 100";
+  }
+
+  if (!input.speed || input.speed < 0 || input.speed > 100) {
+    errors.speed = "Valor maximo 100";
+  }
+
+  if (input.types) {
   }
 
   return errors;
@@ -31,6 +50,15 @@ function CreatePokemon() {
     image: "",
     types: [],
   });
+
+  let btnDisabled = !(
+    input.name.length &&
+    input.hp.length &&
+    input.attack.length &&
+    input.defense.length &&
+    input.speed.length &&
+    input.types.length
+  );
 
   useEffect(() => {
     dispatch(getTypes());
@@ -72,8 +100,8 @@ function CreatePokemon() {
       image: "",
       types: [],
     });
-
     history.push("/home");
+    dispatch(getPokemons());
   };
 
   const handleDeleteType = (ev) => {
@@ -98,6 +126,7 @@ function CreatePokemon() {
             value={input.name}
             name="name"
             onChange={(e) => handleChange(e)}
+            placeholder="Nombre"
           />
           {errors.name && <p>{errors.name}</p>}
         </div>
@@ -109,7 +138,9 @@ function CreatePokemon() {
             value={input.hp}
             name="hp"
             onChange={(e) => handleChange(e)}
+            placeholder="1 - 100"
           />
+          {errors.hp && <p>{errors.hp}</p>}
         </div>
 
         <div>
@@ -119,7 +150,9 @@ function CreatePokemon() {
             value={input.attack}
             name="attack"
             onChange={(e) => handleChange(e)}
+            placeholder="1 - 100"
           />
+          {errors.attack && <p>{errors.attack}</p>}
         </div>
 
         <div>
@@ -129,7 +162,9 @@ function CreatePokemon() {
             value={input.defense}
             name="defense"
             onChange={(e) => handleChange(e)}
+            placeholder="1 - 100"
           />
+          {errors.defense && <p>{errors.defense}</p>}
         </div>
 
         <div>
@@ -139,7 +174,9 @@ function CreatePokemon() {
             value={input.speed}
             name="speed"
             onChange={(e) => handleChange(e)}
+            placeholder="1 - 100"
           />
+          {errors.speed && <p>{errors.speed}</p>}
         </div>
 
         <div>
@@ -149,6 +186,7 @@ function CreatePokemon() {
             value={input.height}
             name="height"
             onChange={(e) => handleChange(e)}
+            placeholder="1 - 100"
           />
         </div>
 
@@ -159,6 +197,7 @@ function CreatePokemon() {
             value={input.weight}
             name="weight"
             onChange={(e) => handleChange(e)}
+            placeholder="1 - 100"
           />
         </div>
 
@@ -194,7 +233,9 @@ function CreatePokemon() {
           </ul>
         </div>
 
-        <button type="submit">Crear</button>
+        <button type="submit" disabled={btnDisabled}>
+          Crear
+        </button>
       </form>
     </div>
   );

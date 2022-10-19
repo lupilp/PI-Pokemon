@@ -59,40 +59,45 @@ router.get("/types", async (req, res) => {
 });
 
 router.post("/pokemons", async (req, res) => {
-  try {
-    const {
-      name,
-      hp,
-      attack,
-      defense,
-      speed,
-      height,
-      weight,
-      image,
-      types,
-      createdInDb,
-    } = req.body;
+  const { name, types } = req.body;
+  if (name && types) {
+    try {
+      const {
+        name,
+        hp,
+        attack,
+        defense,
+        speed,
+        height,
+        weight,
+        image,
+        types,
+        createdInDb,
+      } = req.body;
 
-    const createPokemon = await Pokemon.create({
-      name,
-      hp,
-      attack,
-      defense,
-      speed,
-      height,
-      weight,
-      image,
-      createdInDb,
-    });
+      const createPokemon = await Pokemon.create({
+        name,
+        hp,
+        attack,
+        defense,
+        speed,
+        height,
+        weight,
+        image,
+        createdInDb,
+      });
 
-    const typeDb = await Type.findAll({
-      where: { name: types },
-    });
+      const typeDb = await Type.findAll({
+        where: { name: types },
+      });
 
-    createPokemon.addType(typeDb);
-    res.status(200).send("Pokemon creado con exito");
-  } catch (error) {
-    console.log("entre al error del post", error);
+      createPokemon.addType(typeDb);
+      res.status(200).send("Pokemon creado con exito");
+    } catch (error) {
+      console.log("entre al error del post", error);
+    }
+  } else {
+    res.status(400).send("El name y los tipos del pokemon son obligatorio");
   }
 });
 
