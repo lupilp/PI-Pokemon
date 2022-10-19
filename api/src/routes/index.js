@@ -34,18 +34,25 @@ router.get("/pokemons", async (req, res) => {
 
 router.get("/types", async (req, res) => {
   try {
-    const allMyPokemons = await getAllPokemons();
-    const pokemonTypes = allMyPokemons.map((pokemon) => pokemon.types);
-    const myTypes = pokemonTypes.flat(); // Nuevo arreglo con los elem. de los sub arreglos concatenados -> [[1, 2], [3, 2]] -> [1, 2, 3, 2]
-    const mySetTypes = [...new Set(myTypes)]; // Me elimina los repetidos(set solo acepta valores unicos) -> [1, 2, 3, 2] -> [1, 2, 3]
-    // res.status(200).send(mySetTypes);
-
-    mySetTypes.forEach((type) => {
-      Type.findOrCreate({ where: { name: type } }); // Busca en la tabla type, en la columna name si tiene el type, sino lo crea.
-    });
-
-    const allTypes = await Type.findAll(); // Trae todos los datos de la tabla type.
-    res.status(200).send(allTypes);
+    const cantidadTypes = await Type.count();
+    if (!cantidadTypes) {
+      console.log("los tuve que crear");
+      const allMyPokemons = await getAllPokemons();
+      const pokemonTypes = allMyPokemons.map((pokemon) => pokemon.types);
+      const myTypes = pokemonTypes.flat(); // Nuevo arreglo con los elem. de los sub arreglos concatenados -> [[1, 2], [3, 2]] -> [1, 2, 3, 2]
+      const mySetTypes = [...new Set(myTypes)]; // Me elimina los repetidos(set solo acepta valores unicos) -> [1, 2, 3, 2] -> [1, 2, 3]
+      // res.status(200).send(mySetTypes);
+      mySetTypes.forEach((type) => {
+        Type.findOrCreate({ where: { name: type } }); // Busca en la tabla type, en la columna name si tiene el type, sino lo crea.
+      });
+      const theTypes = await Type.findAll();
+      res.status(200).send(theTypes);
+    } else {
+      console.log("ya los tenia asi que no los cree");
+      // const allTypes = await Type.findAll(); // Trae todos los datos de la tabla type.
+      const theTypes = await Type.findAll();
+      res.status(200).send(theTypes);
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
