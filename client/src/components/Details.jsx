@@ -26,6 +26,7 @@ function Details() {
         <div>
           <div>{pokemonDetail[0].name}</div>
           <img src={pokemonDetail[0].image} alt="imagen-del-pokemon" />
+          <div>{pokemonDetail[0].id}</div>
           <div>{pokemonDetail[0].hp}</div>
           <div>{pokemonDetail[0].attack}</div>
           <div>{pokemonDetail[0].defense}</div>
