@@ -3,9 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getTypes, postPokemon } from "../actions";
 
+function validate(input) {
+  const errors = {};
+  if (!input.name || input.name.length < 3) {
+    errors.name = "Se requiere un nombre de mas de tres letras";
+  }
+
+  return errors;
+}
+
 function CreatePokemon() {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
+
+  const [errors, setErrors] = useState({});
 
   const history = useHistory();
 
@@ -30,6 +41,13 @@ function CreatePokemon() {
       ...input,
       [ev.target.name]: ev.target.value,
     });
+
+    setErrors(
+      validate({
+        ...input,
+        [ev.target.name]: ev.target.value,
+      })
+    );
   };
 
   const handleSelect = (ev) => {
@@ -81,6 +99,7 @@ function CreatePokemon() {
             name="name"
             onChange={(e) => handleChange(e)}
           />
+          {errors.name && <p>{errors.name}</p>}
         </div>
 
         <div>
