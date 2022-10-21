@@ -1,4 +1,5 @@
 .input {
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
   height: 35px;
   width: 300px;
   border-radius: 20px;
@@ -19,14 +20,23 @@
 }
 
 .searchButton {
-  height: 35px;
-  width: 80px;
-  font-family: "Rubik", sans-serif;
+  background: #ff8c87;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  padding: 3px;
+  height: 35px;
+  width: 35px;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchButton:hover {
-  background-color: #e2e2e2;
+  background-color: #ffcd02;
+}
+
+.buscar {
+  height: 25px;
 }

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { getNamePokemon } from "../actions";
 import styles from "../styles/SearchBar.module.css";
+import buscar from "../styles/Images/search.png";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function SearchBar() {
         onClick={(e) => handleSubmit(e)}
         className={styles.searchButton}
       >
-        Buscar
+        <img src={buscar} alt="buscar" className={styles.buscar}></img>
       </button>
     </div>
   );

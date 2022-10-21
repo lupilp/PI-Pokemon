@@ -16,8 +16,8 @@ import styles from "../styles/Home.module.css";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import logo from "../styles/Images/pokemon.png";
-import recargar from "../styles/Images/recargar.png";
-import add from "../styles/Images/add.png";
+import recargar from "../styles/Images/refresh.png";
+import plus from "../styles/Images/plus.png";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -89,7 +89,7 @@ export default function Home() {
         <SearchBar></SearchBar>
         <div className={styles.navDer}>
           <Link to="/pokemons">
-            <img src={add} alt="add" className={styles.add}></img>
+            <img src={plus} alt="plus" className={styles.plus}></img>
           </Link>
 
           <button
@@ -107,32 +107,35 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.filters}>
-        <select onChange={(e) => handleOrder(e)}>
-          <option value="default">Order</option>
-          <option value="asc">Ascendente A-Z</option>
-          <option value="desc">Descendente Z-A</option>
-          <option value="fue">Fuerte</option>
-          <option value="deb">Debil</option>
-        </select>
+      <div className={styles.filtros}>
+        <div className={styles.filters}>
+          <select onChange={(e) => handleOrder(e)}>
+            <option value="default">Order</option>
+            <option value="asc">Ascendente A-Z</option>
+            <option value="desc">Descendente Z-A</option>
+            <option value="fue">Fuerte</option>
+            <option value="deb">Debil</option>
+          </select>
 
-        <select onChange={(e) => handleFilterCreated(e)}>
-          <option value="all">All</option>
-          <option value="existing">Existing</option>
-          <option value="created">Created</option>
-        </select>
+          <select onChange={(e) => handleFilterCreated(e)}>
+            <option value="all">All</option>
+            <option value="existing">Existing</option>
+            <option value="created">Created</option>
+          </select>
 
-        <select onChange={(e) => handleFilterType(e)}>
-          <option value="all">All</option>
-          {allTypes.map((t) => {
-            return (
-              <option value={t.name} key={t.name}>
-                {t.name[0].toUpperCase() + t.name.slice(1)}
-              </option>
-            );
-          })}
-        </select>
+          <select onChange={(e) => handleFilterType(e)}>
+            <option value="all">All</option>
+            {allTypes.map((t) => {
+              return (
+                <option value={t.name} key={t.name}>
+                  {t.name[0].toUpperCase() + t.name.slice(1)}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
+
       <div>
         <Paginado></Paginado>
       </div>
