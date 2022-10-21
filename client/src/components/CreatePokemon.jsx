@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { getPokemons, getTypes, postPokemon } from "../actions";
+import styles from "../styles/Create.module.css";
 
 function validate(input) {
   const errors = {};
@@ -233,7 +234,7 @@ function CreatePokemon() {
           </ul>
         </div>
 
-        <button type="submit" disabled={btnDisabled}>
+        <button type="submit" disabled={btnDisabled} className={styles.button}>
           Crear
         </button>
       </form>
