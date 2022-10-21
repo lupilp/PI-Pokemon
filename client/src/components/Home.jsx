@@ -15,6 +15,9 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import logo from "../styles/Images/pokemon.png";
+import recargar from "../styles/Images/recargar.png";
+import add from "../styles/Images/add.png";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -76,17 +79,33 @@ export default function Home() {
 
   return (
     <div>
-      <Link to="/pokemons">Crear un nuevo pokemon</Link>
-      <h1>Bienvenido a tu pokeapp</h1>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Volver a mostrar pokemons
-      </button>
+      <div className={styles.navBar}>
+        <div className={styles.navIzq}>
+          <Link to="/">
+            <img src={logo} alt="logo" className={styles.logo}></img>
+          </Link>
+        </div>
 
-      <SearchBar></SearchBar>
+        <SearchBar></SearchBar>
+        <div className={styles.navDer}>
+          <Link to="/pokemons">
+            <img src={add} alt="add" className={styles.add}></img>
+          </Link>
+
+          <button
+            onClick={(e) => {
+              handleClick(e);
+            }}
+            className={styles.buttonRec}
+          >
+            <img
+              src={recargar}
+              alt="recargar"
+              className={styles.recargar}
+            ></img>
+          </button>
+        </div>
+      </div>
 
       <div className={styles.filters}>
         <select onChange={(e) => handleOrder(e)}>

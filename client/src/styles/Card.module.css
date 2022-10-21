@@ -7,8 +7,54 @@
   align-items: center;
   height: 300px;
   width: 200px;
+  justify-content: space-around;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
-.img {
+.contCard .img {
   width: 50%;
+}
+
+.name {
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #66625c;
+}
+
+.types {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+}
+
+.types div {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 25px;
+  border-radius: 20px;
+}
+
+.detalles {
+  background-color: #33aeaf;
+  color: white;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.contCard:hover {
+  transform: scale(1.03);
 }

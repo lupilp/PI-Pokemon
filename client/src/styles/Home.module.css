@@ -1,14 +1,41 @@
-/* .contCards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-} */
-
 .filters {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
+.navBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f7f7;
+  height: 90px;
+}
+
+.logo {
+  width: 180px;
+  margin-left: 10px;
+}
+
+.add {
+  height: 25px;
+}
+
+.recargar {
+  height: 23px;
+  margin-right: 15px;
+}
+
+.navDer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttonRec {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
