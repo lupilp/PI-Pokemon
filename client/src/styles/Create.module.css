@@ -1,7 +1,6 @@
 .cardCreate {
   background-color: #fff;
   display: flex;
-  align-items: center;
   flex-direction: column;
   width: 700px;
   height: 500px;
@@ -38,4 +37,19 @@
   display: flex;
   position: absolute;
   margin-left: 350px;
+}
+
+.izq {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 40px;
+}
+
+.der {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
 }

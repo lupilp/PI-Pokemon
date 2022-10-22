@@ -124,121 +124,128 @@ function CreatePokemon() {
           <div className={styles.redTitle}>
             <div className={styles.title}>Crea tu pokemon</div>
           </div>
+
           <form onSubmit={(e) => handleSubmit(e)}>
-            <div>
-              <label>Nombre:</label>
-              <input
-                type="text"
-                value={input.name}
-                name="name"
-                onChange={(e) => handleChange(e)}
-                placeholder="Nombre"
-              />
-              {errors.name && <p>{errors.name}</p>}
+            <div className={styles.form}>
+              <div className={styles.izq}>
+                <div>
+                  <label>Nombre:</label>
+                  <input
+                    type="text"
+                    value={input.name}
+                    name="name"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="Nombre"
+                  />
+                  {errors.name && <p>{errors.name}</p>}
+                </div>
+
+                <div>
+                  <label>Hp:</label>
+                  <input
+                    type="number"
+                    value={input.hp}
+                    name="hp"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="1 - 100"
+                  />
+                  {errors.hp && <p>{errors.hp}</p>}
+                </div>
+
+                <div>
+                  <label>Attack:</label>
+                  <input
+                    type="number"
+                    value={input.attack}
+                    name="attack"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="1 - 100"
+                  />
+                  {errors.attack && <p>{errors.attack}</p>}
+                </div>
+
+                <div>
+                  <label>Defense:</label>
+                  <input
+                    type="number"
+                    value={input.defense}
+                    name="defense"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="1 - 100"
+                  />
+                  {errors.defense && <p>{errors.defense}</p>}
+                </div>
+
+                <div>
+                  <select onChange={(e) => handleSelect(e)}>
+                    {types.map((t) => {
+                      return (
+                        <option value={t.name} key={t.name}>
+                          {t.name[0].toUpperCase() + t.name.slice(1)}
+                        </option>
+                      );
+                    })}
+                  </select>
+
+                  <ul>
+                    {input.types.map((t) => {
+                      return (
+                        <li key={t}>
+                          {t}{" "}
+                          <button onClick={() => handleDeleteType(t)}>X</button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+
+              <div className={styles.der}>
+                <div>
+                  <label>Speed:</label>
+                  <input
+                    type="number"
+                    value={input.speed}
+                    name="speed"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="1 - 100"
+                  />
+                  {errors.speed && <p>{errors.speed}</p>}
+                </div>
+
+                <div>
+                  <label>Height:</label>
+                  <input
+                    type="number"
+                    value={input.height}
+                    name="height"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="1 - 100"
+                  />
+                </div>
+
+                <div>
+                  <label>Weight:</label>
+                  <input
+                    type="number"
+                    value={input.weight}
+                    name="weight"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="1 - 100"
+                  />
+                </div>
+
+                <div>
+                  <label>Image:</label>
+                  <input
+                    type="text"
+                    value={input.image}
+                    name="image"
+                    onChange={(e) => handleChange(e)}
+                  />
+                </div>
+              </div>
             </div>
-
-            <div>
-              <label>Hp:</label>
-              <input
-                type="number"
-                value={input.hp}
-                name="hp"
-                onChange={(e) => handleChange(e)}
-                placeholder="1 - 100"
-              />
-              {errors.hp && <p>{errors.hp}</p>}
-            </div>
-
-            <div>
-              <label>Attack:</label>
-              <input
-                type="number"
-                value={input.attack}
-                name="attack"
-                onChange={(e) => handleChange(e)}
-                placeholder="1 - 100"
-              />
-              {errors.attack && <p>{errors.attack}</p>}
-            </div>
-
-            <div>
-              <label>Defense:</label>
-              <input
-                type="number"
-                value={input.defense}
-                name="defense"
-                onChange={(e) => handleChange(e)}
-                placeholder="1 - 100"
-              />
-              {errors.defense && <p>{errors.defense}</p>}
-            </div>
-
-            <div>
-              <label>Speed:</label>
-              <input
-                type="number"
-                value={input.speed}
-                name="speed"
-                onChange={(e) => handleChange(e)}
-                placeholder="1 - 100"
-              />
-              {errors.speed && <p>{errors.speed}</p>}
-            </div>
-
-            <div>
-              <label>Height:</label>
-              <input
-                type="number"
-                value={input.height}
-                name="height"
-                onChange={(e) => handleChange(e)}
-                placeholder="1 - 100"
-              />
-            </div>
-
-            <div>
-              <label>Weight:</label>
-              <input
-                type="number"
-                value={input.weight}
-                name="weight"
-                onChange={(e) => handleChange(e)}
-                placeholder="1 - 100"
-              />
-            </div>
-
-            <div>
-              <label>Image:</label>
-              <input
-                type="text"
-                value={input.image}
-                name="image"
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-
-            <div>
-              <select onChange={(e) => handleSelect(e)}>
-                {types.map((t) => {
-                  return (
-                    <option value={t.name} key={t.name}>
-                      {t.name[0].toUpperCase() + t.name.slice(1)}
-                    </option>
-                  );
-                })}
-              </select>
-
-              <ul>
-                {input.types.map((t) => {
-                  return (
-                    <li key={t}>
-                      {t} <button onClick={() => handleDeleteType(t)}>X</button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
             <button
               type="submit"
               disabled={btnDisabled}
