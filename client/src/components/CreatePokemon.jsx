@@ -11,6 +11,10 @@ function validate(input) {
     errors.name = "Se requiere un nombre de mas de tres letras";
   }
 
+  if (!input.image || !input.image.includes(".png")) {
+    errors.image = "Se requiere una imagen png";
+  }
+
   if (!input.hp || input.hp < 0 || input.hp > 100) {
     errors.hp = "Valor maximo 100";
   }
@@ -27,7 +31,8 @@ function validate(input) {
     errors.speed = "Valor maximo 100";
   }
 
-  if (input.types) {
+  if (input.types.length === 0) {
+    errors.types = "Debes elegir un tipo";
   }
 
   return errors;
@@ -59,7 +64,8 @@ function CreatePokemon() {
     input.attack.length &&
     input.defense.length &&
     input.speed.length &&
-    input.types.length
+    input.types.length &&
+    input.image.length
   );
 
   useEffect(() => {
@@ -218,6 +224,7 @@ function CreatePokemon() {
                       );
                     })}
                   </ul>
+                  {errors.types && <p>{errors.types}</p>}
                 </div>
               </div>
 
@@ -269,6 +276,7 @@ function CreatePokemon() {
                     className={styles.inputs}
                     placeholder="URL"
                   />
+                  {errors.image && <p>{errors.image}</p>}
                 </div>
 
                 <button
