@@ -1,0 +1,41 @@
+.cardCreate {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 700px;
+  height: 500px;
+  border-radius: 50px;
+  justify-content: space-between;
+}
+
+.contGral {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.redTitle {
+  background-color: #eb544d;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  border-radius: 50px 50px 0px 0px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  margin-left: 30px;
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.ash {
+  height: 550px;
+  display: flex;
+  position: absolute;
+  margin-left: 350px;
+}
