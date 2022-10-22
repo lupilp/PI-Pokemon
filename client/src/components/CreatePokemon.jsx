@@ -125,8 +125,8 @@ function CreatePokemon() {
         <button>Volver</button>
       </Link>
       <div className={styles.contGral}>
-        <img src={ash} alt="ash" className={styles.ash} />
         <div className={styles.cardCreate}>
+          <img src={ash} alt="ash" className={styles.ash} />
           <div className={styles.redTitle}>
             <div className={styles.title}>Crea tu pokemon</div>
           </div>
@@ -144,7 +144,9 @@ function CreatePokemon() {
                     placeholder="Nombre"
                     className={styles.inputs}
                   />
-                  {errors.name && <p>{errors.name}</p>}
+                  {errors.name && (
+                    <div className={styles.error}>{errors.name}</div>
+                  )}
                 </div>
 
                 <div>
@@ -157,7 +159,7 @@ function CreatePokemon() {
                     placeholder="1 - 100"
                     className={styles.inputs}
                   />
-                  {errors.hp && <p>{errors.hp}</p>}
+                  {errors.hp && <div className={styles.error}>{errors.hp}</div>}
                 </div>
 
                 <div>
@@ -170,7 +172,9 @@ function CreatePokemon() {
                     placeholder="1 - 100"
                     className={styles.inputs}
                   />
-                  {errors.attack && <p>{errors.attack}</p>}
+                  {errors.attack && (
+                    <div className={styles.error}>{errors.attack}</div>
+                  )}
                 </div>
 
                 <div>
@@ -183,7 +187,9 @@ function CreatePokemon() {
                     placeholder="1 - 100"
                     className={styles.inputs}
                   />
-                  {errors.defense && <p>{errors.defense}</p>}
+                  {errors.defense && (
+                    <div className={styles.error}>{errors.defense}</div>
+                  )}
                 </div>
 
                 <div>
@@ -224,7 +230,9 @@ function CreatePokemon() {
                       );
                     })}
                   </ul>
-                  {errors.types && <p>{errors.types}</p>}
+                  {errors.types && (
+                    <div className={styles.error}>{errors.types}</div>
+                  )}
                 </div>
               </div>
 
@@ -239,7 +247,9 @@ function CreatePokemon() {
                     placeholder="1 - 100"
                     className={styles.inputs}
                   />
-                  {errors.speed && <p>{errors.speed}</p>}
+                  {errors.speed && (
+                    <div className={styles.error}>{errors.speed}</div>
+                  )}
                 </div>
 
                 <div>
@@ -276,7 +286,9 @@ function CreatePokemon() {
                     className={styles.inputs}
                     placeholder="URL"
                   />
-                  {errors.image && <p>{errors.image}</p>}
+                  {errors.image && (
+                    <div className={styles.error}>{errors.image}</div>
+                  )}
                 </div>
 
                 <button

@@ -1,8 +1,14 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 .cardCreate {
   background-color: #fff;
   width: 700px;
-  height: 510px;
+  min-height: 550px;
   border-radius: 50px;
+  position: relative;
 }
 
 .contGral {
@@ -11,10 +17,16 @@
   margin-top: 30px;
 }
 
+.ash {
+  height: 570px;
+  position: absolute;
+  right: -110px;
+}
+
 .redTitle {
   background-color: #eb544d;
   width: 100%;
-  height: 80px;
+  height: 60px;
   display: flex;
   border-radius: 50px 50px 0px 0px;
   align-items: center;
@@ -26,28 +38,21 @@
   color: #fff;
   font-family: "Rubik", sans-serif;
   font-weight: 700;
-  font-size: 30px;
-}
-
-.ash {
-  height: 550px;
-  display: flex;
-  position: absolute;
-  margin-left: 350px;
+  font-size: 26px;
 }
 
 .izq {
   display: flex;
   flex-direction: column;
   padding-inline: 40px;
-  gap: 1.5rem;
+  gap: 1.3rem;
 }
 
 .der {
   display: flex;
   flex-direction: column;
   padding-inline: 40px;
-  gap: 1.5rem;
+  gap: 1.3rem;
 }
 
 .form {
@@ -129,6 +134,11 @@
   cursor: default;
 }
 
-.button:hover {
-  background-color: #e03e35;
+.error {
+  font-family: "Rubik", sans-serif;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  color: #eb544d;
 }
