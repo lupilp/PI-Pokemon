@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Landing.module.css";
 import logo from "../styles/Images/pokemon.png";
-import pikachu from "../styles/Images/Pikachu.png";
 import charizard from "../styles/Gifs/charizard.gif";
 
 export default function LandingPage() {

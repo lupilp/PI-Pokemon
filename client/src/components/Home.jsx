@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import Error from "./Error";
 import logo from "../styles/Images/pokemon.png";
 import recargar from "../styles/Images/refresh.png";
 import plus from "../styles/Images/plus.png";
@@ -140,7 +141,7 @@ export default function Home() {
       </div>
 
       {error ? (
-        <div>No encontré, por favor refresca la pagina</div>
+        <Error></Error>
       ) : (
         <div>
           <Paginado></Paginado>

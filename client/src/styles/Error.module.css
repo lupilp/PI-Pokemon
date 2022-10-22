@@ -1,0 +1,49 @@
+.contError {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.psyduck {
+  height: 300px;
+}
+
+.texto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.text {
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.parrafo {
+  margin-bottom: 30px;
+  font-family: "Rubik", sans-serif;
+}
+
+.button {
+  font-family: "Rubik", sans-serif;
+  height: 30px;
+  width: 150px;
+  border-radius: 20px;
+  background-color: #eb544d;
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+  border: none;
+}
+
+.button:focus {
+  border: none;
+}
+
+.button:hover {
+  background-color: #e93228;
+}

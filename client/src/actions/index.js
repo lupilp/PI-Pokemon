@@ -94,7 +94,6 @@ export function getNamePokemon(payload) {
         payload: json.data,
       });
     } catch (error) {
-      console.log("NO ENCONTRÉ NINGUN POKEMON");
       return dispatch({
         type: SET_ERROR,
         payload: true,
