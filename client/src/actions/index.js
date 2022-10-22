@@ -13,6 +13,7 @@ export const POST_POKEMON = "POST_POKEMON";
 export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_DETAIL_FROM_STATE = "GET_DETAIL_FROM_STATE";
+export const SET_ERROR = "SET_ERROR";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -94,6 +95,10 @@ export function getNamePokemon(payload) {
       });
     } catch (error) {
       console.log("NO ENCONTRÉ NINGUN POKEMON");
+      return dispatch({
+        type: SET_ERROR,
+        payload: true,
+      });
     }
   };
 }
@@ -122,5 +127,12 @@ export function getDetailFromState(payload) {
 export function clearDetail() {
   return {
     type: CLEAR_DETAIL,
+  };
+}
+
+export function setError(payload) {
+  return {
+    type: SET_ERROR,
+    payload,
   };
 }

@@ -12,6 +12,7 @@ import {
   GET_DETAIL,
   CLEAR_DETAIL,
   GET_DETAIL_FROM_STATE,
+  SET_ERROR,
 } from "../actions";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   currentPage: 1,
   types: [],
   detail: [],
+  error: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -163,6 +165,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: [],
+      };
+
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:
