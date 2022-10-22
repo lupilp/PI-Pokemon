@@ -9,6 +9,7 @@
   list-style: none;
   display: flex;
   justify-content: center;
+  color: #66625c;
 }
 
 .pageNumbers li {
@@ -18,20 +19,20 @@
 }
 
 .pageNumbers li.active {
-  background-color: black;
+  background-color: #eb544d;
   color: white;
+  border-radius: 20px;
 }
 
 .pageNumbers li button {
   background-color: transparent;
   border: none;
-  color: black;
+  color: #66625c;
   font-size: 1rem;
   cursor: pointer;
 }
 
 .pageNumbers li button:hover {
-  background-color: black;
   color: white;
 }
 

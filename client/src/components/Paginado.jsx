@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import styles from "../styles/Paginado.module.css";
 import { setCurrentPage } from "../actions";
+import izq from "../styles/Images/chevron-left.png";
+import der from "../styles/Images/chevron-right.png";
 
 const renderData = (data) => {
   return data.map((p) => {
@@ -84,13 +86,18 @@ function Paginado() {
       </div>
       <ul className={styles.pageNumbers}>
         <li>
-          <button onClick={handlePrev}>Prev</button>
+          <button onClick={handlePrev}>
+            <img src={izq} alt="izq" className={styles.chevIzq}></img>
+          </button>
         </li>
 
         {pageNumbers}
 
         <li>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext}>
+            {" "}
+            <img src={der} alt="der" className={styles.chevDer}></img>
+          </button>
         </li>
       </ul>
     </>
