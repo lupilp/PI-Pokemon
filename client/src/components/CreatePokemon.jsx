@@ -4,6 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import { getPokemons, getTypes, postPokemon } from "../actions";
 import styles from "../styles/Create.module.css";
 import ash from "../styles/Images/ash.png";
+import izq from "../styles/Images/chevron-left2.png";
+import poke from "../styles/Images/poke.png";
 
 function validate(input) {
   const errors = {};
@@ -121,13 +123,17 @@ function CreatePokemon() {
 
   return (
     <div>
-      <Link to="/home">
-        <button>Volver</button>
-      </Link>
+      <div className={styles.navBar}>
+        <img src={izq} alt="izq"></img>
+        <Link to="/home">
+          <button className={styles.buttonHome}>Volver a home</button>
+        </Link>
+      </div>
       <div className={styles.contGral}>
         <div className={styles.cardCreate}>
           <img src={ash} alt="ash" className={styles.ash} />
           <div className={styles.redTitle}>
+            <img src={poke} alt="poke" className={styles.poke}></img>
             <div className={styles.title}>Crea tu pokemon</div>
           </div>
 

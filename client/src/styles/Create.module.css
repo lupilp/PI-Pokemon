@@ -6,9 +6,11 @@ ul {
 .cardCreate {
   background-color: #fff;
   width: 700px;
-  min-height: 550px;
+  min-height: 420px;
   border-radius: 50px;
   position: relative;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .contGral {
@@ -30,15 +32,19 @@ ul {
   display: flex;
   border-radius: 50px 50px 0px 0px;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
 }
 
 .title {
-  margin-left: 30px;
   color: #fff;
   font-family: "Rubik", sans-serif;
   font-weight: 700;
   font-size: 26px;
+}
+
+.poke {
+  height: 30px;
+  margin-left: 30px;
 }
 
 .izq {
@@ -112,6 +118,7 @@ ul {
   gap: 0.8rem;
   font-size: 14px;
   font-weight: 400;
+  margin-top: 5px;
 }
 
 .button {
@@ -137,8 +144,27 @@ ul {
 .error {
   font-family: "Rubik", sans-serif;
   font-size: 12px;
+  font-weight: 400;
   display: flex;
   flex-wrap: wrap;
   margin-top: 5px;
   color: #eb544d;
+}
+
+.navBar {
+  background-color: #eb544d;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.buttonHome {
+  cursor: pointer;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
 }
