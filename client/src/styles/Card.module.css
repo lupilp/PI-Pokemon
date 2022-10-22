@@ -10,6 +10,7 @@
   justify-content: space-around;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  background-color: #fff;
 }
 
 .contCard .img {
