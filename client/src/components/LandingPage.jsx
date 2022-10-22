@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Landing.module.css";
 import logo from "../styles/Images/pokemon.png";
 import pikachu from "../styles/Images/Pikachu.png";
+import charizard from "../styles/Gifs/charizard.gif";
 
 export default function LandingPage() {
   return (
@@ -24,7 +25,7 @@ export default function LandingPage() {
       </div>
 
       <div className={styles.contDer}>
-        <img src={pikachu} alt="pikachu" className={styles.pikachuImg} />
+        <img src={charizard} alt="charizard" className={styles.charizardImg} />
       </div>
     </div>
   );

@@ -140,7 +140,7 @@ export default function Home() {
       </div>
 
       {error ? (
-        <div>No encontré</div>
+        <div>No encontré, por favor refresca la pagina</div>
       ) : (
         <div>
           <Paginado></Paginado>
