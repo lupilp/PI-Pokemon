@@ -129,70 +129,91 @@ function CreatePokemon() {
             <div className={styles.form}>
               <div className={styles.izq}>
                 <div>
-                  <label>Nombre:</label>
+                  <div>Nombre:</div>
                   <input
                     type="text"
                     value={input.name}
                     name="name"
                     onChange={(e) => handleChange(e)}
                     placeholder="Nombre"
+                    className={styles.inputs}
                   />
                   {errors.name && <p>{errors.name}</p>}
                 </div>
 
                 <div>
-                  <label>Hp:</label>
+                  <div>Hp:</div>
                   <input
                     type="number"
                     value={input.hp}
                     name="hp"
                     onChange={(e) => handleChange(e)}
                     placeholder="1 - 100"
+                    className={styles.inputs}
                   />
                   {errors.hp && <p>{errors.hp}</p>}
                 </div>
 
                 <div>
-                  <label>Attack:</label>
+                  <div>Attack:</div>
                   <input
                     type="number"
                     value={input.attack}
                     name="attack"
                     onChange={(e) => handleChange(e)}
                     placeholder="1 - 100"
+                    className={styles.inputs}
                   />
                   {errors.attack && <p>{errors.attack}</p>}
                 </div>
 
                 <div>
-                  <label>Defense:</label>
+                  <div>Defense:</div>
                   <input
                     type="number"
                     value={input.defense}
                     name="defense"
                     onChange={(e) => handleChange(e)}
                     placeholder="1 - 100"
+                    className={styles.inputs}
                   />
                   {errors.defense && <p>{errors.defense}</p>}
                 </div>
 
                 <div>
-                  <select onChange={(e) => handleSelect(e)}>
+                  <select
+                    onChange={(e) => handleSelect(e)}
+                    className={styles.select}
+                    disabled={input.types.length >= 2}
+                    defaultValue="title"
+                  >
+                    <option value="title" disabled name="types">
+                      Tipos
+                    </option>
                     {types.map((t) => {
                       return (
-                        <option value={t.name} key={t.name}>
+                        <option
+                          value={t.name}
+                          key={t.name}
+                          className={styles.options}
+                        >
                           {t.name[0].toUpperCase() + t.name.slice(1)}
                         </option>
                       );
                     })}
                   </select>
 
-                  <ul>
+                  <ul className={styles.types}>
                     {input.types.map((t) => {
                       return (
-                        <li key={t}>
-                          {t}{" "}
-                          <button onClick={() => handleDeleteType(t)}>X</button>
+                        <li key={t} className={styles.types}>
+                          {t[0].toUpperCase() + t.slice(1)}
+                          <button
+                            onClick={() => handleDeleteType(t)}
+                            className={styles.deleteButton}
+                          >
+                            x
+                          </button>
                         </li>
                       );
                     })}
@@ -202,57 +223,63 @@ function CreatePokemon() {
 
               <div className={styles.der}>
                 <div>
-                  <label>Speed:</label>
+                  <div>Speed:</div>
                   <input
                     type="number"
                     value={input.speed}
                     name="speed"
                     onChange={(e) => handleChange(e)}
                     placeholder="1 - 100"
+                    className={styles.inputs}
                   />
                   {errors.speed && <p>{errors.speed}</p>}
                 </div>
 
                 <div>
-                  <label>Height:</label>
+                  <div>Height:</div>
                   <input
                     type="number"
                     value={input.height}
                     name="height"
                     onChange={(e) => handleChange(e)}
                     placeholder="1 - 100"
+                    className={styles.inputs}
                   />
                 </div>
 
                 <div>
-                  <label>Weight:</label>
+                  <div>Weight:</div>
                   <input
                     type="number"
                     value={input.weight}
                     name="weight"
                     onChange={(e) => handleChange(e)}
                     placeholder="1 - 100"
+                    className={styles.inputs}
                   />
                 </div>
 
                 <div>
-                  <label>Image:</label>
+                  <div>Image:</div>
                   <input
                     type="text"
                     value={input.image}
                     name="image"
                     onChange={(e) => handleChange(e)}
+                    className={styles.inputs}
+                    placeholder="URL"
                   />
                 </div>
+
+                <button
+                  type="submit"
+                  disabled={btnDisabled}
+                  className={styles.button}
+                >
+                  Crear
+                </button>
               </div>
             </div>
-            <button
-              type="submit"
-              disabled={btnDisabled}
-              className={styles.button}
-            >
-              Crear
-            </button>
           </form>
         </div>
       </div>

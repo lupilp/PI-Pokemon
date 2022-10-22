@@ -1,11 +1,8 @@
 .cardCreate {
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
   width: 700px;
-  height: 500px;
+  height: 510px;
   border-radius: 50px;
-  justify-content: space-between;
 }
 
 .contGral {
@@ -43,13 +40,95 @@
   display: flex;
   flex-direction: column;
   padding-inline: 40px;
+  gap: 1.5rem;
 }
 
 .der {
   display: flex;
   flex-direction: column;
+  padding-inline: 40px;
+  gap: 1.5rem;
 }
 
 .form {
+  padding-top: 20px;
   display: flex;
+  font-family: "Rubik", sans-serif;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+.inputs {
+  margin-top: 5px;
+  padding-left: 15px;
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  border: none;
+  background-color: #f8f7f7;
+}
+
+.inputs:focus {
+  outline: none;
+}
+
+.select {
+  margin-top: 5px;
+  padding-left: 15px;
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  border: none;
+  background-color: #f8f7f7;
+  font-family: "Rubik", sans-serif;
+}
+
+.select:focus {
+  outline: none;
+}
+.options {
+  background-color: #f8f7f7;
+  font-family: "Rubik", sans-serif;
+}
+
+.deleteButton {
+  border-radius: 10px;
+  border: none;
+  background-color: #eb544d;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.types {
+  display: flex;
+  list-style: none;
+  gap: 0.8rem;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.button {
+  height: 30px;
+  width: 100px;
+  border-radius: 8px;
+  background-color: #eb544d;
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+  border: none;
+  margin-top: 5px;
+}
+
+.button:disabled {
+  background-color: #f8f7f7;
+  color: #cfcfcf;
+  border: none;
+  margin-top: 5px;
+  cursor: default;
+}
+
+.button:hover {
+  background-color: #e03e35;
 }
