@@ -87,22 +87,24 @@ function Paginado() {
           </div>
         )}
       </div>
-      <ul className={styles.pageNumbers}>
-        <li>
-          <button onClick={handlePrev}>
-            <img src={izq} alt="izq" className={styles.chevIzq}></img>
-          </button>
-        </li>
 
-        {pageNumbers}
+      <div>
+        <ul className={styles.pageNumbers}>
+          <li>
+            <button onClick={handlePrev}>
+              <img src={izq} alt="izq" className={styles.chevIzq}></img>
+            </button>
+          </li>
 
-        <li>
-          <button onClick={handleNext}>
-            {" "}
-            <img src={der} alt="der" className={styles.chevDer}></img>
-          </button>
-        </li>
-      </ul>
+          {pageNumbers}
+
+          <li>
+            <button onClick={handleNext}>
+              <img src={der} alt="der" className={styles.chevDer}></img>
+            </button>
+          </li>
+        </ul>
+      </div>
     </>
   );
 }
