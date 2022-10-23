@@ -57,13 +57,13 @@ function Details() {
             <div className={styles.contDer}>
               <div className={styles.alturaPeso}>
                 <div className={styles.medidas}>
-                  <div>Peso</div>
-                  <div>{pokemonDetail[0].height}</div>
+                  <div className={styles.title}>Altura</div>
+                  <div>{pokemonDetail[0].height}cm</div>
                 </div>
 
                 <div className={styles.medidas}>
-                  <div>Altura</div>
-                  <div>{pokemonDetail[0].weight}</div>
+                  <div className={styles.title}>Peso</div>
+                  <div>{pokemonDetail[0].weight}kg</div>
                 </div>
               </div>
 
