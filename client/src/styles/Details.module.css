@@ -1,0 +1,11 @@
+.barra {
+  background-color: #e9e8e7;
+  height: 20px;
+  width: 200px;
+}
+
+.barraPintada {
+  height: 100%;
+  background-color: rgb(255, 147, 97);
+  max-width: 100%;
+}
