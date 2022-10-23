@@ -34,7 +34,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case FILTER_BY_TYPE:
-      const allPokemons = state.allPokemons;
+      const allPokemons = [...state.allPokemons];
       const typesFiltered =
         action.payload === "all"
           ? allPokemons
@@ -43,19 +43,29 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: typesFiltered,
         currentPage: 1,
+        error: false,
       };
 
     case FILTER_CREATED:
-      const allPokemones = state.allPokemons;
-      const createdFilter =
-        action.payload === "created"
-          ? allPokemones.filter((p) => p.createdInDb)
-          : allPokemones.filter((p) => !p.createdInDb);
-
+      const allPokemones = [...state.allPokemons];
+      let pokemonesFiltrados;
+      if (action.payload === "created") {
+        pokemonesFiltrados = allPokemones.filter((p) => p.createdInDb);
+        if (!pokemonesFiltrados.length) {
+          return {
+            ...state,
+            error: true,
+          };
+        }
+      }
+      if (action.payload === "existing") {
+        pokemonesFiltrados = allPokemones.filter((p) => !p.createdInDb);
+      }
       return {
         ...state,
-        pokemons: createdFilter,
+        pokemons: pokemonesFiltrados,
         currentPage: 1,
+        error: false,
       };
 
     case ORDER_BY_NAME:
@@ -84,6 +94,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: sortedPokemon,
         currentPage: 1,
+        error: false,
       };
 
     case ORDER_BY_ATTACK:
@@ -112,6 +123,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: sortedPokemonAttack,
         currentPage: 1,
+        error: false,
       };
 
     case SET_CURRENT_PAGE:
@@ -121,11 +133,12 @@ function rootReducer(state = initialState, action) {
       };
 
     case RESET_POKEMONS:
-      const allPokemonitos = state.allPokemons;
+      const allPokemonitos = [...state.allPokemons];
       return {
         ...state,
         pokemons: allPokemonitos,
         currentPage: 1,
+        error: false,
       };
 
     case GET_TYPES:

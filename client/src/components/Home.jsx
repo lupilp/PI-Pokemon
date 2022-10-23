@@ -27,9 +27,10 @@ export default function Home() {
   const pokemonDetail = useSelector((state) => state.detail);
   const allTypes = useSelector((state) => state.types);
   const error = useSelector((state) => state.error);
+  const pokemonsQueNoSeBorran = useSelector((state) => state.allPokemons);
 
   useEffect(() => {
-    if (!allPokemons.length) {
+    if (!pokemonsQueNoSeBorran.length) {
       dispatch(getPokemons());
       dispatch(getTypes());
     }
