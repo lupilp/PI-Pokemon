@@ -7,16 +7,16 @@ import buscar from "../styles/Images/search.png";
 
 function SearchBar() {
   const dispatch = useDispatch();
-  const [pokemon, setPokemon] = useState("");
+  const [input, setInput] = useState("");
 
   const handleInput = (ev) => {
-    setPokemon(ev.target.value);
+    setInput(ev.target.value);
   };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    dispatch(getNamePokemon(pokemon));
-    setPokemon("");
+    dispatch(getNamePokemon(input));
+    setInput("");
   };
 
   return (
@@ -25,7 +25,7 @@ function SearchBar() {
         type="text"
         placeholder="Busca tu pokemon..."
         onChange={(e) => handleInput(e)}
-        value={pokemon}
+        value={input}
         className={styles.input}
       />
       <button

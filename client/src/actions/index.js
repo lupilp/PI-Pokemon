@@ -76,18 +76,21 @@ export function getTypes() {
   };
 }
 
-export function postPokemon(payload) {
+export function postPokemon(dataPokemon) {
   return async function (dispatch) {
-    const json = await axios.post("http://localhost:3001/pokemons", payload);
+    const json = await axios.post(
+      "http://localhost:3001/pokemons",
+      dataPokemon
+    );
     return json;
   };
 }
 
-export function getNamePokemon(payload) {
+export function getNamePokemon(namePokemon) {
   return async function (dispatch) {
     try {
       const json = await axios.get(
-        `http://localhost:3001/pokemons?name=${payload}`
+        `http://localhost:3001/pokemons?name=${namePokemon}`
       );
       return dispatch({
         type: GET_NAME_POKEMON,
@@ -102,10 +105,12 @@ export function getNamePokemon(payload) {
   };
 }
 
-export function getDetail(payload) {
+export function getDetail(pokemonId) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`http://localhost:3001/pokemons/${payload}`);
+      const json = await axios.get(
+        `http://localhost:3001/pokemons/${pokemonId}`
+      );
       return dispatch({
         type: GET_DETAIL,
         payload: json.data,
