@@ -77,7 +77,7 @@ function CreatePokemon() {
   const handleChange = (ev) => {
     setInput({
       ...input,
-      [ev.target.name]: ev.target.value,
+      [ev.target.name]: ev.target.value.toLowerCase(),
     });
 
     setErrors(
