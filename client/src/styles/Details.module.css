@@ -72,12 +72,14 @@
   height: 470px;
   margin: 15px;
   border-radius: 50px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .infoBasica {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
@@ -91,6 +93,7 @@
   height: 470px;
   margin: 15px;
   border-radius: 50px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .image {
@@ -140,14 +143,20 @@
   font-weight: 600;
   font-size: 20px;
   color: #66625c;
+  max-width: 50%;
+  text-align: center;
 }
 
 .alturaPeso {
+  margin-top: 20px;
   display: flex;
-  gap: 100px;
+  gap: 30px;
 }
 
 .medidas {
+  background-color: rgba(217, 217, 217, 0.582);
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,8 +168,33 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 25px;
-  color: #868686;
+  color: #fff;
+  background-color: #ffcd02;
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.navBar {
+  background-color: #eb544d;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.buttonHome {
+  cursor: pointer;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
 }

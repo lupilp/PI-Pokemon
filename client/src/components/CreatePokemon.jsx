@@ -10,31 +10,31 @@ import poke from "../styles/Images/poke.png";
 function validate(input) {
   const errors = {};
   if (!input.name || input.name.length < 3) {
-    errors.name = "Se requiere un nombre de mas de tres letras";
+    errors.name = "Debe tener un nombre de mas de tres letras";
   }
 
   if (!input.image || !input.image.includes(".png")) {
-    errors.image = "Se requiere una imagen png";
+    errors.image = "Debe tener una imagen png";
   }
 
-  if (!input.hp || input.hp < 0 || input.hp > 100) {
-    errors.hp = "Valor maximo 100";
+  if (!input.hp || input.hp < 0 || input.hp > 150) {
+    errors.hp = "Debe tener hp entre 1 - 150";
   }
 
-  if (!input.attack || input.attack < 0 || input.attack > 100) {
-    errors.attack = "Valor maximo 100";
+  if (!input.attack || input.attack < 0 || input.attack > 150) {
+    errors.attack = "Debe tener ataque entre 1 - 150";
   }
 
-  if (!input.defense || input.defense < 0 || input.defense > 100) {
-    errors.defense = "Valor maximo 100";
+  if (!input.defense || input.defense < 0 || input.defense > 150) {
+    errors.defense = "Debe tener defensa entre 1 - 150";
   }
 
-  if (!input.speed || input.speed < 0 || input.speed > 100) {
-    errors.speed = "Valor maximo 100";
+  if (!input.speed || input.speed < 0 || input.speed > 150) {
+    errors.speed = "Debe tener velocidad entre 1 - 150";
   }
 
   if (input.types.length === 0) {
-    errors.types = "Debes elegir un tipo";
+    errors.types = "Debe tener por lo menos un tipo";
   }
 
   return errors;
@@ -162,7 +162,7 @@ function CreatePokemon() {
                     value={input.hp}
                     name="hp"
                     onChange={(e) => handleChange(e)}
-                    placeholder="1 - 100"
+                    placeholder="1 - 150"
                     className={styles.inputs}
                   />
                   {errors.hp && <div className={styles.error}>{errors.hp}</div>}
@@ -175,7 +175,7 @@ function CreatePokemon() {
                     value={input.attack}
                     name="attack"
                     onChange={(e) => handleChange(e)}
-                    placeholder="1 - 100"
+                    placeholder="1 - 150"
                     className={styles.inputs}
                   />
                   {errors.attack && (
@@ -190,7 +190,7 @@ function CreatePokemon() {
                     value={input.defense}
                     name="defense"
                     onChange={(e) => handleChange(e)}
-                    placeholder="1 - 100"
+                    placeholder="1 - 150"
                     className={styles.inputs}
                   />
                   {errors.defense && (
@@ -250,7 +250,7 @@ function CreatePokemon() {
                     value={input.speed}
                     name="speed"
                     onChange={(e) => handleChange(e)}
-                    placeholder="1 - 100"
+                    placeholder="1 - 150"
                     className={styles.inputs}
                   />
                   {errors.speed && (
@@ -265,7 +265,7 @@ function CreatePokemon() {
                     value={input.height}
                     name="height"
                     onChange={(e) => handleChange(e)}
-                    placeholder="1 - 100"
+                    placeholder="Altura"
                     className={styles.inputs}
                   />
                 </div>
@@ -277,7 +277,7 @@ function CreatePokemon() {
                     value={input.weight}
                     name="weight"
                     onChange={(e) => handleChange(e)}
-                    placeholder="1 - 100"
+                    placeholder="Peso"
                     className={styles.inputs}
                   />
                 </div>

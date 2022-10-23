@@ -5,6 +5,7 @@ import { getDetail, getDetailFromState } from "../actions";
 import styles from "../styles/Details.module.css";
 import "../styles/index.css";
 import pokeball from "../styles/Gifs/pokeball.gif";
+import izq from "../styles/Images/chevron-left2.png";
 
 function Details() {
   const dispatch = useDispatch();
@@ -24,9 +25,12 @@ function Details() {
 
   return (
     <div>
-      <Link to="/home">
-        <button>Volver</button>
-      </Link>
+      <div className={styles.navBar}>
+        <img src={izq} alt="izq"></img>
+        <Link to="/home">
+          <button className={styles.buttonHome}>Volver a home</button>
+        </Link>
+      </div>
       {pokemonDetail.length ? (
         <div className={styles.contGral}>
           <div className={styles.contRed}>
@@ -75,7 +79,7 @@ function Details() {
                   <div className={styles.barra}>
                     <div
                       className={styles.barraPintada}
-                      style={{ width: `${(pokemonDetail[0].hp / 125) * 100}%` }}
+                      style={{ width: `${(pokemonDetail[0].hp / 150) * 100}%` }}
                     ></div>
                   </div>
                 </div>
@@ -87,7 +91,7 @@ function Details() {
                     <div
                       className={styles.barraPintada}
                       style={{
-                        width: `${(pokemonDetail[0].attack / 125) * 100}%`,
+                        width: `${(pokemonDetail[0].attack / 150) * 100}%`,
                       }}
                     ></div>
                   </div>
@@ -102,7 +106,7 @@ function Details() {
                     <div
                       className={styles.barraPintada}
                       style={{
-                        width: `${(pokemonDetail[0].defense / 125) * 100}%`,
+                        width: `${(pokemonDetail[0].defense / 150) * 100}%`,
                       }}
                     ></div>
                   </div>
@@ -115,7 +119,7 @@ function Details() {
                     <div
                       className={styles.barraPintada}
                       style={{
-                        width: `${(pokemonDetail[0].speed / 125) * 100}%`,
+                        width: `${(pokemonDetail[0].speed / 150) * 100}%`,
                       }}
                     ></div>
                   </div>
