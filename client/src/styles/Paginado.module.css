@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   color: #66625c;
+  padding: 20px;
 }
 
 .pageNumbers li {
@@ -38,4 +39,8 @@
 
 .pageNumbers li button:focus {
   outline: none;
+}
+
+.pokeball {
+  height: 200px;
 }

@@ -5,6 +5,7 @@ import styles from "../styles/Paginado.module.css";
 import { setCurrentPage } from "../actions";
 import izq from "../styles/Images/chevron-left.png";
 import der from "../styles/Images/chevron-right.png";
+import pokeball from "../styles/Gifs/pokeball.gif";
 
 const renderData = (data) => {
   return data.map((p) => {
@@ -81,7 +82,9 @@ function Paginado() {
         {allPokemons.length ? (
           renderData(currentPokemons)
         ) : (
-          <div>Cargando...</div>
+          <div>
+            <img src={pokeball} alt="pokeball" className={styles.pokeball} />
+          </div>
         )}
       </div>
       <ul className={styles.pageNumbers}>
