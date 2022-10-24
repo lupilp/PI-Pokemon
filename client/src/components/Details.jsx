@@ -28,7 +28,7 @@ function Details() {
       <div className={styles.navBar}>
         <img src={izq} alt="izq"></img>
         <Link to="/home">
-          <button className={styles.buttonHome}>Volver a home</button>
+          <button className={styles.buttonHome}>Return to home</button>
         </Link>
       </div>
       {pokemonDetail.length ? (
@@ -62,12 +62,12 @@ function Details() {
               <div className={styles.contDer}>
                 <div className={styles.alturaPeso}>
                   <div className={styles.medidas}>
-                    <div className={styles.title}>Altura</div>
+                    <div className={styles.title}>Height</div>
                     <div>{pokemonDetail[0].height}cm</div>
                   </div>
 
                   <div className={styles.medidas}>
-                    <div className={styles.title}>Peso</div>
+                    <div className={styles.title}>Weight</div>
                     <div>{pokemonDetail[0].weight}kg</div>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ function Details() {
                   </div>
 
                   <div className={styles.filaStat}>
-                    <div>Ataque</div>
+                    <div>Attack</div>
                     <div className={styles.number}>
                       {pokemonDetail[0].attack}
                     </div>
@@ -103,7 +103,7 @@ function Details() {
                   </div>
 
                   <div className={styles.filaStat}>
-                    <div>Defensa</div>
+                    <div>Defense</div>
                     <div className={styles.number}>
                       {pokemonDetail[0].defense}
                     </div>
@@ -118,7 +118,7 @@ function Details() {
                   </div>
 
                   <div className={styles.filaStat}>
-                    <div>Velocidad</div>
+                    <div>Speed</div>
                     <div className={styles.number}>
                       {pokemonDetail[0].speed}
                     </div>

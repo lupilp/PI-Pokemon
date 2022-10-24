@@ -9,7 +9,8 @@
 }
 
 .barra {
-  background-color: #e9e8e7;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.33);
   height: 20px;
   width: 200px;
   border-radius: 20px;
@@ -17,7 +18,7 @@
 
 .barraPintada {
   height: 100%;
-  background-color: #ffcd02;
+  background-color: #eb544d;
   max-width: 100%;
   border-radius: 20px 0px 0px 20px;
 }
@@ -63,7 +64,7 @@
 
 .contGris {
   display: flex;
-  background-color: #f0f0f0;
+  background-color: #f8f7f7;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
@@ -75,10 +76,10 @@
   align-items: center;
   justify-content: space-evenly;
   background-color: #fff;
-  width: 440px;
+  width: 380px;
   height: 470px;
   border-radius: 50px;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .infoBasica {
@@ -95,7 +96,7 @@
   align-items: center;
   justify-content: space-around;
   background-color: transparent;
-  width: 440px;
+  width: 380px;
   height: 470px;
   border-radius: 50px;
 }
@@ -158,8 +159,7 @@
 }
 
 .medidas {
-  background-color: rgba(217, 217, 217, 0.582);
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -168,7 +168,9 @@
   font-weight: 600;
   font-size: 18px;
   color: #66625c;
-  gap: 10px;
+  gap: 7px;
+  background-color: #fff;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.33);
 }
 
 .title {
@@ -178,11 +180,7 @@
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   font-size: 25px;
-  color: #fff;
-  background-color: #ffcd02;
-  height: 40px;
-  width: 100px;
-  border-radius: 10px;
+  color: #868686;
 }
 
 .navBar {

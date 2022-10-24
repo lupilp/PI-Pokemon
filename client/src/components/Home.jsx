@@ -113,10 +113,10 @@ export default function Home() {
       <div className={styles.filters}>
         <select onChange={(e) => handleOrder(e)} className={styles.order}>
           <option value="default">Order</option>
-          <option value="asc">Ascendente A-Z</option>
-          <option value="desc">Descendente Z-A</option>
-          <option value="fue">Fuerte</option>
-          <option value="deb">Debil</option>
+          <option value="asc">Sort A-Z</option>
+          <option value="desc">Sort Z-A</option>
+          <option value="fue">Strong</option>
+          <option value="deb">Weak</option>
         </select>
 
         <select

@@ -18,12 +18,10 @@ function Error() {
       <img src={psyduck} alt="psyduck" className={styles.psyduck} />
       <div className={styles.texto}>
         <div className={styles.text}>Oh no!</div>
-        <div className={styles.parrafo}>
-          No encontramos el pokemon que buscas
-        </div>
+        <div className={styles.parrafo}>Can't find what you're looking for</div>
       </div>
       <button onClick={(e) => handleHome(e)} className={styles.button}>
-        Volver a home
+        Return to home
       </button>
     </div>
   );

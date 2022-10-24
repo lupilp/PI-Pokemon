@@ -121,7 +121,7 @@ function CreatePokemon() {
       <div className={styles.navBar}>
         <img src={izq} alt="izq"></img>
         <Link to="/home">
-          <button className={styles.buttonHome}>Volver a home</button>
+          <button className={styles.buttonHome}>Return to home</button>
         </Link>
       </div>
       <div className={styles.contGral}>
@@ -129,20 +129,20 @@ function CreatePokemon() {
           <img src={ash} alt="ash" className={styles.ash} />
           <div className={styles.redTitle}>
             <img src={poke} alt="poke" className={styles.poke}></img>
-            <div className={styles.title}>Crea tu pokemon</div>
+            <div className={styles.title}>Create your pokemon</div>
           </div>
 
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className={styles.form}>
               <div className={styles.izq}>
                 <div>
-                  <div>Nombre:</div>
+                  <div>Name:</div>
                   <input
                     type="text"
                     value={input.name}
                     name="name"
                     onChange={(e) => handleChange(e)}
-                    placeholder="Nombre"
+                    placeholder="Name"
                     className={styles.inputs}
                   />
                   {errors.name && (
@@ -201,7 +201,7 @@ function CreatePokemon() {
                     defaultValue="title"
                   >
                     <option value="title" disabled name="types">
-                      Tipos
+                      Types
                     </option>
                     {types.map((t) => {
                       return (
@@ -260,7 +260,7 @@ function CreatePokemon() {
                     value={input.height}
                     name="height"
                     onChange={(e) => handleChange(e)}
-                    placeholder="Altura"
+                    placeholder="Height"
                     className={styles.inputs}
                   />
                 </div>
@@ -272,7 +272,7 @@ function CreatePokemon() {
                     value={input.weight}
                     name="weight"
                     onChange={(e) => handleChange(e)}
-                    placeholder="Peso"
+                    placeholder="Weight"
                     className={styles.inputs}
                   />
                 </div>
@@ -297,7 +297,7 @@ function CreatePokemon() {
                   disabled={btnDisabled}
                   className={styles.button}
                 >
-                  Crear
+                  Create
                 </button>
               </div>
             </div>

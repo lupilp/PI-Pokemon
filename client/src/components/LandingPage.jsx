@@ -10,7 +10,7 @@ export default function LandingPage() {
       <div className={styles.contIzq}>
         <img src={logo} alt="logo" className={styles.logo} />
         <div className={styles.contTitle}>
-          <div className={styles.title}>¡Bienvenido a tu pokedex!</div>
+          <div className={styles.title}>¡Welcome to your pokedex!</div>
           <div className={styles.parrafo}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -18,7 +18,7 @@ export default function LandingPage() {
             and scrambled it to make a type specimen book.
           </div>
           <Link to="/home">
-            <button className={styles.button}>Ingresar</button>
+            <button className={styles.button}>Let's go !</button>
           </Link>
         </div>
       </div>
