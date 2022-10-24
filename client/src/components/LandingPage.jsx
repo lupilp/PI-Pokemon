@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Landing.module.css";
 import logo from "../styles/Images/pokemon.png";
 import charizard from "../styles/Gifs/charizard.gif";
+import linkedin from "../styles/Images/linkedin.png";
+import github from "../styles/Images/github.png";
 
 export default function LandingPage() {
   return (
@@ -20,6 +22,21 @@ export default function LandingPage() {
           <Link to="/home">
             <button className={styles.button}>Let's go !</button>
           </Link>
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/lourdeslopezpepa/"
+            target="_blank"
+            rel="nofollow"
+          >
+            {" "}
+            <img src={linkedin} alt="linkedin" className={styles.linkedin} />
+          </a>
+
+          <a href="https://github.com/lupilp" target="_blank" rel="nofollow">
+            {" "}
+            <img src={github} alt="github" className={styles.github} />
+          </a>
         </div>
       </div>
 

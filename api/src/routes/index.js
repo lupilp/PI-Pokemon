@@ -81,7 +81,7 @@ router.post("/pokemons", async (req, res) => {
         urlDeImagen = image;
       } else {
         urlDeImagen =
-          "https://www.pngkit.com/png/full/62-622203_anime-pokemon-png-transparent-pokemon-pikachu.png";
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png";
       }
 
       const createPokemon = await Pokemon.create({

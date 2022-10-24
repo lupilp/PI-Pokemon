@@ -1,5 +1,6 @@
 .background {
-  background-image: url(./Images/back.jpg);
+  /* background-image: url(./Images/back.jpg); */
+  background-color: #fff;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -26,6 +27,9 @@
 .contDer {
   display: flex;
   align-items: center;
+  background-color: #eb544d;
+  border-radius: 400px 0px 0px 400px;
+  box-shadow: 0px 0px 3px 9px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -36,31 +40,56 @@
 .charizardImg {
   width: 650px;
   height: 600px;
-  filter: drop-shadow(0px 3px 4px rgba(141, 0, 0, 0.4));
+  filter: drop-shadow(0px 3px 4px rgba(141, 0, 0, 10));
 }
 
 .title {
   font-size: 60px;
   font-weight: 700;
   font-family: "Rubik", sans-serif;
+  color: #66625c;
 }
 
 .button {
   font-family: "Rubik", sans-serif;
   color: rgb(255, 255, 255);
-  background-color: black;
+  background-color: #eb544d;
   font-weight: 700;
-  height: 30px;
+  height: 40px;
   width: 120px;
   border-radius: 20px;
   cursor: pointer;
+  border: none;
 }
 .button:hover {
   color: rgb(255, 255, 255);
-  background-color: #8b1610;
+  background-color: #e93228;
   border: none;
 }
 .parrafo {
   font-family: "Rubik", sans-serif;
   font-weight: 300;
+}
+
+.linkedin {
+  height: 20px;
+  background-color: #868686;
+  border-radius: 100%;
+  padding: 8px;
+}
+
+.linkedin:hover {
+  background-color: #66625c;
+}
+
+.github {
+  height: 20px;
+  background-color: #868686;
+  border-radius: 100%;
+  padding: 8px;
+  margin-left: 10px;
+}
+
+.github:hover {
+  background-color: #66625c;
 }
