@@ -75,6 +75,15 @@ router.post("/pokemons", async (req, res) => {
         createdInDb,
       } = req.body;
 
+      let urlDeImagen = "";
+
+      if (image) {
+        urlDeImagen = image;
+      } else {
+        urlDeImagen =
+          "https://www.pngkit.com/png/full/62-622203_anime-pokemon-png-transparent-pokemon-pikachu.png";
+      }
+
       const createPokemon = await Pokemon.create({
         name,
         hp,
@@ -83,7 +92,7 @@ router.post("/pokemons", async (req, res) => {
         speed,
         height,
         weight,
-        image,
+        image: urlDeImagen,
         createdInDb,
       });
 

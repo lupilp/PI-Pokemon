@@ -13,10 +13,6 @@ function validate(input) {
     errors.name = "Debe tener un nombre de mas de tres letras";
   }
 
-  if (!input.image || !input.image.includes(".png")) {
-    errors.image = "Debe tener una imagen png";
-  }
-
   if (!input.hp || input.hp < 0 || input.hp > 150) {
     errors.hp = "Debe tener hp entre 1 - 150";
   }
@@ -66,8 +62,7 @@ function CreatePokemon() {
     input.attack.length &&
     input.defense.length &&
     input.speed.length &&
-    input.types.length &&
-    input.image.length
+    input.types.length
   );
 
   useEffect(() => {
