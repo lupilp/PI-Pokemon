@@ -23,19 +23,18 @@ import plus from "../styles/Images/plus.png";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allPokemons = useSelector((state) => state.pokemons);
   const pokemonDetail = useSelector((state) => state.detail);
   const allTypes = useSelector((state) => state.types);
   const error = useSelector((state) => state.error);
-  const pokemonsQueNoSeBorran = useSelector((state) => state.allPokemons);
+  const pokemonsCopia = useSelector((state) => state.allPokemons);
 
   useEffect(() => {
-    if (!pokemonsQueNoSeBorran.length) {
+    if (!pokemonsCopia.length) {
       dispatch(getPokemons());
       dispatch(getTypes());
     }
     pokemonDetail.length && dispatch(clearDetail());
-  }, [dispatch, allPokemons.length, pokemonDetail.length]);
+  }, [dispatch, pokemonsCopia.length, pokemonDetail.length]);
 
   function handleClick(ev) {
     ev.preventDefault();
