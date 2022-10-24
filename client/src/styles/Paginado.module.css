@@ -14,15 +14,20 @@
 }
 
 .pageNumbers li {
-  padding: 10px;
-  /* border: 1px solid black; */
+  /* padding: 10px; */
   cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pageNumbers li.active {
   background-color: #eb544d;
   color: white;
-  border-radius: 20px;
+  font-weight: 500;
 }
 
 .pageNumbers li button {
@@ -31,10 +36,15 @@
   color: #66625c;
   font-size: 1rem;
   cursor: pointer;
+  /* border: 1px solid black; */
+  display: flex;
+  padding: 5px;
+  border-radius: 50%;
 }
 
 .pageNumbers li button:hover {
   color: white;
+  background-color: #fff;
 }
 
 .pageNumbers li button:focus {

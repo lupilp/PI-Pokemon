@@ -20,6 +20,10 @@
   padding-left: 10px;
 }
 
+.order:focus {
+  outline: none;
+}
+
 .created {
   border: none;
   font-family: "Rubik", sans-serif;
@@ -29,6 +33,10 @@
   padding-left: 10px;
 }
 
+.created:focus {
+  outline: none;
+}
+
 .types {
   border: none;
   font-family: "Rubik", sans-serif;
@@ -36,6 +44,10 @@
   height: 30px;
   border-radius: 20px;
   padding-left: 10px;
+}
+
+.types:focus {
+  outline: none;
 }
 
 .navBar {
@@ -89,11 +101,3 @@
   cursor: pointer;
   background-color: transparent;
 }
-
-/* .filtros {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 200px;
-  margin-bottom: 20px;
-} */
