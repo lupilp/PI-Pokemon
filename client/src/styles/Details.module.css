@@ -55,10 +55,17 @@
 .contRed {
   display: flex;
   background-color: #eb544d;
-  width: 900px;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: 500px;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+}
+
+.contGris {
+  display: flex;
+  background-color: #f0f0f0;
+  justify-content: center;
+  align-items: center;
   border-radius: 50px;
 }
 
@@ -70,7 +77,6 @@
   background-color: #fff;
   width: 440px;
   height: 470px;
-  margin: 15px;
   border-radius: 50px;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -88,12 +94,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: #fff;
+  background-color: transparent;
   width: 440px;
   height: 470px;
-  margin: 15px;
   border-radius: 50px;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .image {
