@@ -147,8 +147,11 @@ function Details() {
                     </div>
                   </div>
                   {pokemonDetail[0].createdInDb && (
-                    <button onClick={(e) => handlerDelete(e)}>
-                      Eliminar Pokemon
+                    <button
+                      onClick={(e) => handlerDelete(e)}
+                      className={styles.deleteButton}
+                    >
+                      Delete Pokemon
                     </button>
                   )}
                 </div>
