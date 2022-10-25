@@ -135,6 +135,21 @@ router.get("/pokemons/:id", async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const pokemonDelete = await Pokemon.findByPk(id);
+    if (!pokemonDelete) {
+      res.status(400).send("No existe el pokemon que deseas eliminar");
+    } else {
+      pokemonDelete.destroy();
+      return res.status(200).send("Pokemon eliminado correctamente");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message }, "Entré al error de delete");
+  }
+});
+
 // getInfoDb();
 
 module.exports = router;

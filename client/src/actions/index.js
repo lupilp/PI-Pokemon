@@ -14,6 +14,7 @@ export const GET_DETAIL = "GET_DETAIL";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_DETAIL_FROM_STATE = "GET_DETAIL_FROM_STATE";
 export const SET_ERROR = "SET_ERROR";
+export const DELETE_POKEMON = "DELETE_POKEMON";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -138,5 +139,18 @@ export function setError(payload) {
   return {
     type: SET_ERROR,
     payload,
+  };
+}
+
+export function deletePokemon(pokemonId) {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`http://localhost:3001/delete/${pokemonId}`);
+      return dispatch({
+        type: GET_DETAIL,
+      });
+    } catch (error) {
+      console.log("No puedo eliminar el pokemon", error);
+    }
   };
 }

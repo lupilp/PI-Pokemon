@@ -69,6 +69,14 @@ function CreatePokemon() {
     dispatch(getTypes());
   }, [dispatch]);
 
+  useEffect(() => {
+    setErrors(
+      validate({
+        ...input,
+      })
+    );
+  }, [input]);
+
   const handleChange = (ev) => {
     setInput({
       ...input,

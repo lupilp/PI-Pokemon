@@ -27,13 +27,13 @@ export default function LandingPage() {
           <a
             href="https://www.linkedin.com/in/lourdeslopezpepa/"
             target="_blank"
-            rel="nofollow"
+            rel="noreferrer"
           >
             {" "}
             <img src={linkedin} alt="linkedin" className={styles.linkedin} />
           </a>
 
-          <a href="https://github.com/lupilp" target="_blank" rel="nofollow">
+          <a href="https://github.com/lupilp" target="_blank" rel="noreferrer">
             {" "}
             <img src={github} alt="github" className={styles.github} />
           </a>

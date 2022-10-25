@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail, getDetailFromState } from "../actions";
+import {
+  getDetail,
+  getDetailFromState,
+  deletePokemon,
+  getPokemons,
+} from "../actions";
 import styles from "../styles/Details.module.css";
 import "../styles/index.css";
 import pokeball from "../styles/Gifs/pokeball.gif";
@@ -15,6 +20,8 @@ function Details() {
 
   const allPokemons = useSelector((state) => state.pokemons);
 
+  const history = useHistory();
+
   useEffect(() => {
     if (allPokemons.length) {
       dispatch(getDetailFromState(id));
@@ -22,6 +29,13 @@ function Details() {
       dispatch(getDetail(id));
     }
   }, [dispatch, id, allPokemons.length]);
+
+  const handlerDelete = () => {
+    dispatch(deletePokemon(id));
+    alert("Pokemon eliminado");
+    history.push("/home");
+    dispatch(getPokemons());
+  };
 
   return (
     <div>
@@ -31,6 +45,7 @@ function Details() {
           <button className={styles.buttonHome}>Return to home</button>
         </Link>
       </div>
+
       {pokemonDetail.length ? (
         <div className={styles.contGral}>
           <div className={styles.contRed}>
@@ -131,6 +146,11 @@ function Details() {
                       ></div>
                     </div>
                   </div>
+                  {pokemonDetail[0].createdInDb && (
+                    <button onClick={(e) => handlerDelete(e)}>
+                      Eliminar Pokemon
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
