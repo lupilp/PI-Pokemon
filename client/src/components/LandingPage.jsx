@@ -14,10 +14,9 @@ export default function LandingPage() {
         <div className={styles.contTitle}>
           <div className={styles.title}>¡Welcome to your pokedex!</div>
           <div className={styles.parrafo}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            Here you can find all the info from your favorite pokemons. Also you
+            can let your creativity fly and create a new exclusive pokemon! I
+            hope you like it :)
           </div>
           <Link to="/home">
             <button className={styles.button}>Let's go !</button>

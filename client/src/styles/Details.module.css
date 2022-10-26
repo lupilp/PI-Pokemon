@@ -105,6 +105,7 @@
   min-height: 250px;
   max-width: 250px;
   position: absolute;
+  /* object-fit: cover; */
 }
 
 .circulo {

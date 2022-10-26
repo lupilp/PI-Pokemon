@@ -152,6 +152,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: action.payload,
+        currentPage: 1,
       };
 
     case POST_POKEMON:
