@@ -78,12 +78,20 @@ function Details() {
                 <div className={styles.alturaPeso}>
                   <div className={styles.medidas}>
                     <div className={styles.title}>Height</div>
-                    <div>{pokemonDetail[0].height}cm</div>
+                    {pokemonDetail[0].height > 0 ? (
+                      <div>{pokemonDetail[0].height}cm</div>
+                    ) : (
+                      <div> ? </div>
+                    )}
                   </div>
 
                   <div className={styles.medidas}>
                     <div className={styles.title}>Weight</div>
-                    <div>{pokemonDetail[0].weight}kg</div>
+                    {pokemonDetail[0].weight > 0 ? (
+                      <div>{pokemonDetail[0].weight}cm</div>
+                    ) : (
+                      <div> ? </div>
+                    )}
                   </div>
                 </div>
 

@@ -59,39 +59,38 @@ router.get("/types", async (req, res) => {
 });
 
 router.post("/pokemons", async (req, res) => {
-  const { name, types } = req.body;
-  if (name && types) {
-    try {
-      const {
-        name,
-        hp,
-        attack,
-        defense,
-        speed,
-        height,
-        weight,
-        image,
-        types,
-        createdInDb,
-      } = req.body;
+  try {
+    const {
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      image,
+      types,
+      createdInDb,
+    } = req.body;
 
-      let urlDeImagen = "";
+    let urlDeImagen = "";
 
-      if (image) {
-        urlDeImagen = image;
-      } else {
-        urlDeImagen =
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png";
-      }
+    if (image) {
+      urlDeImagen = image;
+    } else {
+      urlDeImagen =
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png";
+    }
 
+    if (name && types.length) {
       const createPokemon = await Pokemon.create({
         name,
         hp,
         attack,
         defense,
         speed,
-        height,
-        weight,
+        height: Number(height),
+        weight: Number(weight),
         image: urlDeImagen,
         createdInDb,
       });
@@ -102,11 +101,11 @@ router.post("/pokemons", async (req, res) => {
 
       createPokemon.addType(typeDb);
       res.status(200).send("Pokemon creado con exito");
-    } catch (error) {
-      console.log("entre al error del post", error);
+    } else {
+      res.status(400).send("Faltaron datos para crear el juego");
     }
-  } else {
-    res.status(400).send("El name y los tipos del pokemon son obligatorio");
+  } catch (error) {
+    console.log("entre al error del post", error);
   }
 });
 

@@ -16,22 +16,27 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
 
       hp: {
         type: DataTypes.INTEGER,
+        validate: { min: 1, max: 150 },
       },
 
       attack: {
         type: DataTypes.INTEGER,
+        validate: { min: 1, max: 150 },
       },
 
       defense: {
         type: DataTypes.INTEGER,
+        validate: { min: 1, max: 150 },
       },
 
       speed: {
         type: DataTypes.INTEGER,
+        validate: { min: 1, max: 150 },
       },
 
       height: {
@@ -44,6 +49,7 @@ module.exports = (sequelize) => {
 
       image: {
         type: DataTypes.STRING,
+        isUrl: true,
       },
 
       createdInDb: {
