@@ -14,6 +14,7 @@ import {
   GET_DETAIL_FROM_STATE,
   SET_ERROR,
   DELETE_POKEMON,
+  EDIT_POKEMON,
 } from "../actions";
 
 const initialState = {
@@ -192,6 +193,10 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
+    case EDIT_POKEMON:
+      return {
+        ...state,
+      };
     default:
       return { ...state };
   }

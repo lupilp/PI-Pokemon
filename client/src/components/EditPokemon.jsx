@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { getPokemons, getTypes, postPokemon } from "../actions";
+import { Link, useHistory, useParams } from "react-router-dom";
+import {
+  editPokemon,
+  getDetail,
+  getDetailFromState,
+  getPokemons,
+} from "../actions";
 import styles from "../styles/Create.module.css";
 import ash from "../styles/Images/ash.png";
 import izq from "../styles/Images/chevron-left2.png";
@@ -36,38 +41,43 @@ function validate(input) {
   return errors;
 }
 
-function CreatePokemon() {
+function EditPokemon() {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
-
   const [errors, setErrors] = useState({});
-
+  const { id } = useParams();
+  const allPokemons = useSelector((state) => state.pokemons);
   const history = useHistory();
+  const detailsPokemon = useSelector((state) => state.detail);
 
   const [input, setInput] = useState({
-    name: "",
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: "",
-    image: "",
-    types: [],
+    name: detailsPokemon[0].name || "",
+    hp: detailsPokemon[0].hp || "",
+    attack: detailsPokemon[0].attack || "",
+    defense: detailsPokemon[0].defense || "",
+    speed: detailsPokemon[0].speed || "",
+    height: detailsPokemon[0].height || "",
+    weight: detailsPokemon[0].weight || "",
+    image: detailsPokemon[0].image || "",
+    types: detailsPokemon[0].types || "",
   });
 
-  let btnDisabled = !(
-    input.name.length &&
-    input.hp.length &&
-    input.attack.length &&
-    input.defense.length &&
-    input.speed.length &&
-    input.types.length
-  );
+  // let btnDisabled = !(
+  //   input.name.length &&
+  //   input.hp.length &&
+  //   input.attack.length &&
+  //   input.defense.length &&
+  //   input.speed.length &&
+  //   input.types.length
+  // );
 
   useEffect(() => {
-    dispatch(getTypes());
-  }, [dispatch]);
+    if (allPokemons.length) {
+      dispatch(getDetailFromState(id));
+    } else {
+      dispatch(getDetail(id));
+    }
+  }, [dispatch, id, allPokemons.length]);
 
   useEffect(() => {
     setErrors(
@@ -100,8 +110,8 @@ function CreatePokemon() {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    dispatch(postPokemon(input));
-    alert("Pokemon creado");
+    dispatch(editPokemon(id, input));
+    alert("Pokemon editado");
     setInput({
       name: "",
       hp: "",
@@ -137,7 +147,7 @@ function CreatePokemon() {
           <img src={ash} alt="ash" className={styles.ash} />
           <div className={styles.redTitle}>
             <img src={poke} alt="poke" className={styles.poke}></img>
-            <div className={styles.title}>Create your pokemon</div>
+            <div className={styles.title}>Edit your pokemon</div>
           </div>
 
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -262,9 +272,7 @@ function CreatePokemon() {
                 </div>
 
                 <div>
-                  <div>
-                    Height <small>(cm)</small>:
-                  </div>
+                  <div>Height:</div>
                   <input
                     type="number"
                     value={input.height}
@@ -276,9 +284,7 @@ function CreatePokemon() {
                 </div>
 
                 <div>
-                  <div>
-                    Weight <small>(kg)</small>:
-                  </div>
+                  <div>Weight:</div>
                   <input
                     type="number"
                     value={input.weight}
@@ -304,12 +310,8 @@ function CreatePokemon() {
                   )}
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={btnDisabled}
-                  className={styles.button}
-                >
-                  Create
+                <button type="submit" className={styles.button}>
+                  Edit
                 </button>
               </div>
             </div>
@@ -320,4 +322,4 @@ function CreatePokemon() {
   );
 }
 
-export default CreatePokemon;
+export default EditPokemon;

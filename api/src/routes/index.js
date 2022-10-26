@@ -102,7 +102,7 @@ router.post("/pokemons", async (req, res) => {
       createPokemon.addType(typeDb);
       res.status(200).send("Pokemon creado con exito");
     } else {
-      res.status(400).send("Faltaron datos para crear el juego");
+      res.status(400).send("Faltaron datos para crear el pokemon");
     }
   } catch (error) {
     console.log("entre al error del post", error);
@@ -149,6 +149,61 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// getInfoDb();
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      image,
+      types,
+      createdInDb,
+    } = req.body;
+    if (id) {
+      let urlDeImagen = "";
+
+      if (image) {
+        urlDeImagen = image;
+      } else {
+        urlDeImagen =
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png";
+      }
+
+      if (name) {
+        const findPokemon = await Pokemon.findByPk(id);
+        await findPokemon.update(
+          {
+            name,
+            hp,
+            attack,
+            defense,
+            speed,
+            height: Number(height),
+            weight: Number(weight),
+            image: urlDeImagen,
+            createdInDb,
+          },
+          { where: { id: id } }
+        );
+
+        const typeDb = await Type.findAll({
+          where: { name: types },
+        });
+
+        await findPokemon.setTypes(typeDb);
+        res.status(200).send("Pokemon modificado con exito");
+      } else {
+        res.status(400).send("Faltaron datos para modificar el pokemon");
+      }
+    }
+  } catch (error) {
+    console.log("entre al error del put", error);
+  }
+});
 
 module.exports = router;

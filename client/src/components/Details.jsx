@@ -88,7 +88,7 @@ function Details() {
                   <div className={styles.medidas}>
                     <div className={styles.title}>Weight</div>
                     {pokemonDetail[0].weight > 0 ? (
-                      <div>{pokemonDetail[0].weight}cm</div>
+                      <div>{pokemonDetail[0].weight}kg</div>
                     ) : (
                       <div> ? </div>
                     )}
@@ -155,12 +155,15 @@ function Details() {
                     </div>
                   </div>
                   {pokemonDetail[0].createdInDb && (
-                    <button
-                      onClick={(e) => handlerDelete(e)}
-                      className={styles.deleteButton}
-                    >
-                      Delete Pokemon
-                    </button>
+                    <>
+                      <button
+                        onClick={(e) => handlerDelete(e)}
+                        className={styles.deleteButton}
+                      >
+                        Delete Pokemon
+                      </button>
+                      <Link to={`/pokemons/edit/${id}`}>Edit</Link>
+                    </>
                   )}
                 </div>
               </div>
