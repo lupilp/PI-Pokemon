@@ -18,11 +18,18 @@ export const DELETE_POKEMON = "DELETE_POKEMON";
 
 export function getPokemons() {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/pokemons");
-    return dispatch({
-      type: GET_POKEMONS,
-      payload: json.data,
-    });
+    try {
+      const json = await axios.get("http://localhost:3001/pokemons");
+      return dispatch({
+        type: GET_POKEMONS,
+        payload: json.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: SET_ERROR,
+        payload: true,
+      });
+    }
   };
 }
 
