@@ -165,17 +165,29 @@ export function deletePokemon(pokemonId) {
 
 export function editPokemon(pokemonId, pokemonEditado) {
   return async function (dispatch) {
-    try {
-      const json = await axios.put(
-        `http://localhost:3001/edit/${pokemonId}`,
-        pokemonEditado
-      );
-      return dispatch({
-        type: EDIT_POKEMON,
-        payload: json.data,
+    axios
+      .put(`http://localhost:3001/edit/${pokemonId}`, pokemonEditado)
+      .then((json) => {
+        return dispatch({
+          type: EDIT_POKEMON,
+          payload: json.data,
+        });
+      })
+      .catch((error) => {
+        console.log("No pude modificar el pokemon", error);
       });
-    } catch (error) {
-      console.log("No pude modificar el pokemon", error);
-    }
+
+    // try {
+    //   const json = await axios.put(
+    //     `http://localhost:3001/edit/${pokemonId}`,
+    //     pokemonEditado
+    //   );
+    //   return dispatch({
+    //     type: EDIT_POKEMON,
+    //     payload: json.data,
+    //   });
+    // } catch (error) {
+    //   console.log("No pude modificar el pokemon", error);
+    // }
   };
 }
