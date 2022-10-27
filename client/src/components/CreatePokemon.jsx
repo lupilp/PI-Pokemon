@@ -56,14 +56,19 @@ function CreatePokemon() {
     types: [],
   });
 
-  let btnDisabled = !(
-    input.name.length &&
-    input.hp.length &&
-    input.attack.length &&
-    input.defense.length &&
-    input.speed.length &&
-    input.types.length
-  );
+  let btnDisabled =
+    !(
+      input.name.length &&
+      input.hp.length &&
+      input.attack.length &&
+      input.defense.length &&
+      input.speed.length &&
+      input.types.length
+    ) ||
+    input.hp > 150 ||
+    input.attack > 150 ||
+    input.defense > 150 ||
+    input.speed > 150;
 
   useEffect(() => {
     dispatch(getTypes());

@@ -81,11 +81,7 @@ function EditPokemon() {
 
   useEffect(() => {
     dispatch(getTypes());
-    if (allPokemons.length) {
-      dispatch(getDetailFromState(id));
-    } else {
-      dispatch(getDetail(id));
-    }
+    dispatch(getDetail(id));
   }, [dispatch, allPokemons.length, id]);
 
   useEffect(() => {
@@ -148,6 +144,7 @@ function EditPokemon() {
       types: [],
     });
     history.push(`/pokemons/${id}`);
+    dispatch(getDetail(id));
   };
 
   return (
