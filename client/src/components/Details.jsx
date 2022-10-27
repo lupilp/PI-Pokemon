@@ -155,15 +155,21 @@ function Details() {
                     </div>
                   </div>
                   {pokemonDetail[0].createdInDb && (
-                    <>
+                    <div className={styles.buttons}>
+                      <Link
+                        to={`/pokemons/edit/${id}`}
+                        className={`${styles.deleteButton} ${styles.buttonRed}`}
+                      >
+                        Edit Pokemon
+                      </Link>
+
                       <button
                         onClick={(e) => handlerDelete(e)}
                         className={styles.deleteButton}
                       >
                         Delete Pokemon
                       </button>
-                      <Link to={`/pokemons/edit/${id}`}>Edit</Link>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>

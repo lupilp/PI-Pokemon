@@ -6,99 +6,66 @@ import {
   getDetail,
   getDetailFromState,
   getPokemons,
+  getTypes,
 } from "../actions";
-import styles from "../styles/Create.module.css";
-import ash from "../styles/Images/ash.png";
+
+import styles from "../styles/Edit.module.css";
+import ash from "../styles/Images/ash2.png";
 import izq from "../styles/Images/chevron-left2.png";
 import poke from "../styles/Images/poke.png";
 
-function validate(input) {
-  const errors = {};
-  if (!input.name || input.name.length < 3) {
-    errors.name = "Debe tener un nombre de mas de tres letras";
-  }
-
-  if (!input.hp || input.hp < 0 || input.hp > 150) {
-    errors.hp = "Debe tener hp entre 1 - 150";
-  }
-
-  if (!input.attack || input.attack < 0 || input.attack > 150) {
-    errors.attack = "Debe tener ataque entre 1 - 150";
-  }
-
-  if (!input.defense || input.defense < 0 || input.defense > 150) {
-    errors.defense = "Debe tener defensa entre 1 - 150";
-  }
-
-  if (!input.speed || input.speed < 0 || input.speed > 150) {
-    errors.speed = "Debe tener velocidad entre 1 - 150";
-  }
-
-  if (input.types.length === 0) {
-    errors.types = "Debe tener por lo menos un tipo";
-  }
-
-  return errors;
-}
-
 function EditPokemon() {
   const dispatch = useDispatch();
-  const types = useSelector((state) => state.types);
-  const [errors, setErrors] = useState({});
   const { id } = useParams();
-  const allPokemons = useSelector((state) => state.pokemons);
   const history = useHistory();
-  const detailsPokemon = useSelector((state) => state.detail);
+  const allPokemons = useSelector((state) => state.pokemons);
+
+  const pokemonDetail = useSelector((state) => state.detail);
+  const types = useSelector((state) => state.types);
 
   const [input, setInput] = useState({
-    name: detailsPokemon[0].name || "",
-    hp: detailsPokemon[0].hp || "",
-    attack: detailsPokemon[0].attack || "",
-    defense: detailsPokemon[0].defense || "",
-    speed: detailsPokemon[0].speed || "",
-    height: detailsPokemon[0].height || "",
-    weight: detailsPokemon[0].weight || "",
-    image: detailsPokemon[0].image || "",
-    types: detailsPokemon[0].types || "",
+    name: "",
+    hp: "",
+    attack: "",
+    defense: "",
+    speed: "",
+    height: "",
+    weight: "",
+    image: "",
+    types: [],
   });
 
-  // let btnDisabled = !(
-  //   input.name.length &&
-  //   input.hp.length &&
-  //   input.attack.length &&
-  //   input.defense.length &&
-  //   input.speed.length &&
-  //   input.types.length
-  // );
+  let btnDisabled = !(
+    input.name.length &&
+    input.hp &&
+    input.attack &&
+    input.defense &&
+    input.speed &&
+    input.types.length
+  );
+
+  console.log(input);
 
   useEffect(() => {
+    dispatch(getTypes());
     if (allPokemons.length) {
       dispatch(getDetailFromState(id));
     } else {
       dispatch(getDetail(id));
     }
-  }, [dispatch, id, allPokemons.length]);
+  }, [dispatch, allPokemons.length, id]);
 
   useEffect(() => {
-    setErrors(
-      validate({
-        ...input,
-      })
-    );
-  }, [input]);
+    if (pokemonDetail.length) {
+      setInput(pokemonDetail[0]);
+    }
+  }, [pokemonDetail.length, pokemonDetail]);
 
   const handleChange = (ev) => {
     setInput({
       ...input,
       [ev.target.name]: ev.target.value.toLowerCase(),
     });
-
-    setErrors(
-      validate({
-        ...input,
-        [ev.target.name]: ev.target.value,
-      })
-    );
   };
 
   const handleSelect = (ev) => {
@@ -108,9 +75,16 @@ function EditPokemon() {
     });
   };
 
+  const handleDeleteType = (ev) => {
+    setInput({
+      ...input,
+      types: input.types.filter((t) => t !== ev),
+    });
+  };
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    dispatch(editPokemon(id, input));
+    dispatch(editPokemon(input, id));
     alert("Pokemon editado");
     setInput({
       name: "",
@@ -125,13 +99,6 @@ function EditPokemon() {
     });
     history.push("/home");
     dispatch(getPokemons());
-  };
-
-  const handleDeleteType = (ev) => {
-    setInput({
-      ...input,
-      types: input.types.filter((t) => t !== ev),
-    });
   };
 
   return (
@@ -163,9 +130,6 @@ function EditPokemon() {
                     placeholder="Name"
                     className={styles.inputs}
                   />
-                  {errors.name && (
-                    <div className={styles.error}>{errors.name}</div>
-                  )}
                 </div>
 
                 <div>
@@ -178,7 +142,6 @@ function EditPokemon() {
                     placeholder="1 - 150"
                     className={styles.inputs}
                   />
-                  {errors.hp && <div className={styles.error}>{errors.hp}</div>}
                 </div>
 
                 <div>
@@ -191,9 +154,6 @@ function EditPokemon() {
                     placeholder="1 - 150"
                     className={styles.inputs}
                   />
-                  {errors.attack && (
-                    <div className={styles.error}>{errors.attack}</div>
-                  )}
                 </div>
 
                 <div>
@@ -206,9 +166,6 @@ function EditPokemon() {
                     placeholder="1 - 150"
                     className={styles.inputs}
                   />
-                  {errors.defense && (
-                    <div className={styles.error}>{errors.defense}</div>
-                  )}
                 </div>
 
                 <div>
@@ -249,9 +206,6 @@ function EditPokemon() {
                       );
                     })}
                   </ul>
-                  {errors.types && (
-                    <div className={styles.error}>{errors.types}</div>
-                  )}
                 </div>
               </div>
 
@@ -266,11 +220,7 @@ function EditPokemon() {
                     placeholder="1 - 150"
                     className={styles.inputs}
                   />
-                  {errors.speed && (
-                    <div className={styles.error}>{errors.speed}</div>
-                  )}
                 </div>
-
                 <div>
                   <div>Height:</div>
                   <input
@@ -282,7 +232,6 @@ function EditPokemon() {
                     className={styles.inputs}
                   />
                 </div>
-
                 <div>
                   <div>Weight:</div>
                   <input
@@ -294,7 +243,6 @@ function EditPokemon() {
                     className={styles.inputs}
                   />
                 </div>
-
                 <div>
                   <div>Image:</div>
                   <input
@@ -305,12 +253,13 @@ function EditPokemon() {
                     className={styles.inputs}
                     placeholder="URL"
                   />
-                  {errors.image && (
-                    <div className={styles.error}>{errors.image}</div>
-                  )}
                 </div>
 
-                <button type="submit" className={styles.button}>
+                <button
+                  type="submit"
+                  className={styles.button}
+                  disabled={btnDisabled}
+                >
                   Edit
                 </button>
               </div>
