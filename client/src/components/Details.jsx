@@ -79,7 +79,7 @@ function Details() {
                   <div className={styles.medidas}>
                     <div className={styles.title}>Height</div>
                     {pokemonDetail[0].height > 0 ? (
-                      <div>{pokemonDetail[0].height}cm</div>
+                      <div>{pokemonDetail[0].height / 10} m</div>
                     ) : (
                       <div> ? </div>
                     )}
@@ -88,7 +88,7 @@ function Details() {
                   <div className={styles.medidas}>
                     <div className={styles.title}>Weight</div>
                     {pokemonDetail[0].weight > 0 ? (
-                      <div>{pokemonDetail[0].weight}kg</div>
+                      <div>{pokemonDetail[0].weight / 10}kg</div>
                     ) : (
                       <div> ? </div>
                     )}
@@ -102,7 +102,7 @@ function Details() {
 
                     <div className={styles.barra}>
                       <div
-                        className={styles.barraPintada}
+                        className={styles.hp}
                         style={{
                           width: `${(pokemonDetail[0].hp / 150) * 100}%`,
                         }}
@@ -117,7 +117,7 @@ function Details() {
                     </div>
                     <div className={styles.barra}>
                       <div
-                        className={styles.barraPintada}
+                        className={styles.attack}
                         style={{
                           width: `${(pokemonDetail[0].attack / 150) * 100}%`,
                         }}
@@ -132,7 +132,7 @@ function Details() {
                     </div>
                     <div className={styles.barra}>
                       <div
-                        className={styles.barraPintada}
+                        className={styles.defense}
                         style={{
                           width: `${(pokemonDetail[0].defense / 150) * 100}%`,
                         }}
@@ -147,7 +147,7 @@ function Details() {
                     </div>
                     <div className={styles.barra}>
                       <div
-                        className={styles.barraPintada}
+                        className={styles.speed}
                         style={{
                           width: `${(pokemonDetail[0].speed / 150) * 100}%`,
                         }}

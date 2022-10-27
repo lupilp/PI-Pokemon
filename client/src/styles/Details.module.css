@@ -16,9 +16,30 @@
   border-radius: 20px;
 }
 
-.barraPintada {
+.attack {
   height: 100%;
   background-color: #eb544d;
+  max-width: 100%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.hp {
+  height: 100%;
+  background-color: #22c02a;
+  max-width: 100%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.defense {
+  height: 100%;
+  background-color: #f4ea53;
+  max-width: 100%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.speed {
+  height: 100%;
+  background-color: #33aeaf;
   max-width: 100%;
   border-radius: 20px 0px 0px 20px;
 }

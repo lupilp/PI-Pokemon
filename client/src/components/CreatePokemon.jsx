@@ -92,10 +92,12 @@ function CreatePokemon() {
   };
 
   const handleSelect = (ev) => {
-    setInput({
-      ...input,
-      types: [...input.types, ev.target.value],
-    });
+    if (!input.types.includes(ev.target.value)) {
+      setInput({
+        ...input,
+        types: [...input.types, ev.target.value],
+      });
+    }
   };
 
   const handleSubmit = (ev) => {
