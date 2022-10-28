@@ -152,14 +152,16 @@ export function setError(payload) {
 
 export function deletePokemon(pokemonId) {
   return async function (dispatch) {
-    try {
-      await axios.delete(`http://localhost:3001/delete/${pokemonId}`);
-      return dispatch({
-        type: GET_DETAIL,
+    await axios
+      .delete(`http://localhost:3001/delete/${pokemonId}`)
+      .then(() => {
+        return dispatch({
+          type: DELETE_POKEMON,
+        });
+      })
+      .catch((error) => {
+        console.log("No puedo eliminar el pokemon", error);
       });
-    } catch (error) {
-      console.log("No puedo eliminar el pokemon", error);
-    }
   };
 }
 
@@ -176,18 +178,5 @@ export function editPokemon(pokemonId, pokemonEditado) {
       .catch((error) => {
         console.log("No pude modificar el pokemon", error);
       });
-
-    // try {
-    //   const json = await axios.put(
-    //     `http://localhost:3001/edit/${pokemonId}`,
-    //     pokemonEditado
-    //   );
-    //   return dispatch({
-    //     type: EDIT_POKEMON,
-    //     payload: json.data,
-    //   });
-    // } catch (error) {
-    //   console.log("No pude modificar el pokemon", error);
-    // }
   };
 }
