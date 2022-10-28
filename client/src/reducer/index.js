@@ -29,7 +29,7 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS:
-      if (action.payload[0] !== null) {
+      if (!action.payload.includes(null)) {
         return {
           ...state,
           pokemons: action.payload,
