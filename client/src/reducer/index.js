@@ -29,11 +29,15 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS:
-      return {
-        ...state,
-        pokemons: action.payload,
-        allPokemons: action.payload,
-      };
+      if (action.payload[0] !== null) {
+        return {
+          ...state,
+          pokemons: action.payload,
+          allPokemons: action.payload,
+        };
+      } else {
+        return { ...state, error: true };
+      }
 
     case FILTER_BY_TYPE:
       const allPokemons = [...state.allPokemons];
