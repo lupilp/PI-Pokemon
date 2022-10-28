@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
-import {
-  editPokemon,
-  getDetail,
-  getDetailFromState,
-  getTypes,
-} from "../actions";
+import { editPokemon, getDetail, getTypes } from "../actions";
 
 import styles from "../styles/Edit.module.css";
 import ash from "../styles/Images/ash2.png";
@@ -284,7 +279,9 @@ function EditPokemon() {
                   )}
                 </div>
                 <div>
-                  <div>Height:</div>
+                  <div>
+                    Height <small>(cm)</small>:
+                  </div>
                   <input
                     type="number"
                     value={input.height}
@@ -295,7 +292,9 @@ function EditPokemon() {
                   />
                 </div>
                 <div>
-                  <div>Weight:</div>
+                  <div>
+                    Weight <small>(kg)</small>:
+                  </div>
                   <input
                     type="number"
                     value={input.weight}
