@@ -15,6 +15,7 @@ import {
   SET_ERROR,
   DELETE_POKEMON,
   EDIT_POKEMON,
+  CLEAR_HOME,
 } from "../actions";
 
 const initialState = {
@@ -179,6 +180,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detail: detallesPokemon,
+      };
+
+    case CLEAR_HOME:
+      return {
+        ...state,
+        pokemons: [],
       };
 
     case CLEAR_DETAIL:

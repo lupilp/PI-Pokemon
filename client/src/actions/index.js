@@ -16,6 +16,7 @@ export const GET_DETAIL_FROM_STATE = "GET_DETAIL_FROM_STATE";
 export const SET_ERROR = "SET_ERROR";
 export const DELETE_POKEMON = "DELETE_POKEMON";
 export const EDIT_POKEMON = "EDIT_POKEMON";
+export const CLEAR_HOME = "CLEAR_HOME";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -140,6 +141,12 @@ export function getDetailFromState(payload) {
 export function clearDetail() {
   return {
     type: CLEAR_DETAIL,
+  };
+}
+
+export function clearHome() {
+  return {
+    type: CLEAR_HOME,
   };
 }
 

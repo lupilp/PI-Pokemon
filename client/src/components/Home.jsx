@@ -90,6 +90,7 @@ export default function Home() {
         </div>
 
         <SearchBar></SearchBar>
+
         <div className={styles.navDer}>
           <Link to="/pokemons">
             <img src={plus} alt="plus" className={styles.plus}></img>

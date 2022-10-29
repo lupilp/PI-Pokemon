@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import styles from "../styles/Paginado.module.css";
-import { setCurrentPage } from "../actions";
+import { clearHome, setCurrentPage } from "../actions";
 import izq from "../styles/Images/chevron-left.png";
 import der from "../styles/Images/chevron-right.png";
 import pokeball from "../styles/Gifs/pokeball.gif";
@@ -29,6 +29,10 @@ function Paginado() {
   const currentPage = useSelector((state) => state.currentPage);
 
   const [pokemonsPerPage] = useState(12);
+
+  useEffect(() => {
+    dispatch(clearHome());
+  }, [dispatch]);
 
   const handleClick = (ev) => {
     dispatch(setCurrentPage(Number(ev.target.id)));
