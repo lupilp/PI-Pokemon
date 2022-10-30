@@ -21,7 +21,7 @@ export const CLEAR_HOME = "CLEAR_HOME";
 export function getPokemons() {
   return async function (dispatch) {
     try {
-      const json = await axios.get("http://localhost:3001/pokemons");
+      const json = await axios.get("/pokemons");
       return dispatch({
         type: GET_POKEMONS,
         payload: json.data,
@@ -78,7 +78,7 @@ export function resetPokemons() {
 
 export function getTypes() {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/types");
+    const json = await axios.get("/types");
     return dispatch({
       type: GET_TYPES,
       payload: json.data,
@@ -88,10 +88,7 @@ export function getTypes() {
 
 export function postPokemon(dataPokemon) {
   return async function (dispatch) {
-    const json = await axios.post(
-      "http://localhost:3001/pokemons",
-      dataPokemon
-    );
+    const json = await axios.post("/pokemons", dataPokemon);
     return json;
   };
 }
@@ -99,9 +96,7 @@ export function postPokemon(dataPokemon) {
 export function getNamePokemon(namePokemon) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(
-        `http://localhost:3001/pokemons?name=${namePokemon}`
-      );
+      const json = await axios.get(`/pokemons?name=${namePokemon}`);
       return dispatch({
         type: GET_NAME_POKEMON,
         payload: json.data,
@@ -118,9 +113,7 @@ export function getNamePokemon(namePokemon) {
 export function getDetail(pokemonId) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(
-        `http://localhost:3001/pokemons/${pokemonId}`
-      );
+      const json = await axios.get(`/pokemons/${pokemonId}`);
       return dispatch({
         type: GET_DETAIL,
         payload: json.data,
@@ -160,7 +153,7 @@ export function setError(payload) {
 export function deletePokemon(pokemonId) {
   return async function (dispatch) {
     try {
-      await axios.delete(`http://localhost:3001/delete/${pokemonId}`);
+      await axios.delete(`/delete/${pokemonId}`);
       return dispatch({
         type: GET_DETAIL,
       });
@@ -173,10 +166,7 @@ export function deletePokemon(pokemonId) {
 export function editPokemon(pokemonId, pokemonEditado) {
   return async function (dispatch) {
     try {
-      const json = await axios.put(
-        `http://localhost:3001/edit/${pokemonId}`,
-        pokemonEditado
-      );
+      const json = await axios.put(`/edit/${pokemonId}`, pokemonEditado);
       return dispatch({
         type: EDIT_POKEMON,
         payload: json.data,
