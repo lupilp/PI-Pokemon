@@ -30,9 +30,9 @@ function Paginado() {
 
   const [pokemonsPerPage] = useState(12);
 
-  useEffect(() => {
-    dispatch(clearHome());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(clearHome());
+  // }, [dispatch]);
 
   const handleClick = (ev) => {
     dispatch(setCurrentPage(Number(ev.target.id)));
