@@ -88,7 +88,6 @@ export default function Home() {
             <img src={logo} alt="logo" className={styles.logo}></img>
           </Link>
         </div>
-
         <SearchBar></SearchBar>
 
         <div className={styles.navDer}>

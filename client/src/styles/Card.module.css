@@ -5,12 +5,13 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 300px;
-  width: 200px;
-  justify-content: space-around;
+  min-height: 350px;
+  width: 15%;
+  justify-content: space-evenly;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   background-color: #fff;
+  gap: 1rem;
 }
 
 .contCard .img {
@@ -20,40 +21,28 @@
 .name {
   font-family: "Rubik", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  /* font-size: clamp(1rem, 2vw, 2rem); */
+  font-size: 1.7em;
   color: #66625c;
 }
 
 .types {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10%;
   font-family: "Rubik", sans-serif;
-  font-size: 14px;
+  font-size: 1em;
 }
 
 .types div {
   color: #fff;
   display: flex;
+  font-weight: 400;
   justify-content: center;
   align-items: center;
-  width: 75px;
-  height: 25px;
+  width: 5.5rem;
+  height: 2rem;
   border-radius: 20px;
-}
-
-.detalles {
-  background-color: #33aeaf;
-  color: white;
-  width: 120px;
-  height: 30px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Rubik", sans-serif;
-  font-size: 13px;
-  text-decoration: none;
 }
 
 .contCard:hover {
