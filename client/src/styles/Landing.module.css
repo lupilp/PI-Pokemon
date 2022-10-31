@@ -13,38 +13,37 @@
 .contIzq {
   display: flex;
   flex-direction: column;
-  padding-top: 2rem;
-  gap: 15%;
-  width: 49%;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .contTitle {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .contDer {
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #eb544d;
-  border-radius: 400px 0px 0px 400px;
+  border-radius: 100% 0% 0% 100%;
   box-shadow: 0px 0px 3px 9px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  width: 250px;
+  width: 30%;
   filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.4));
 }
 
 .charizardImg {
-  width: 650px;
-  height: 600px;
+  min-height: 80%;
   filter: drop-shadow(0px 3px 4px rgba(141, 0, 0, 10));
 }
 
 .title {
-  font-size: 60px;
+  font-size: clamp(2.5rem, 1rem + 10vw, 4.9rem);
   font-weight: 700;
   font-family: "Rubik", sans-serif;
   color: #66625c;
@@ -55,9 +54,9 @@
   color: rgb(255, 255, 255);
   background-color: #eb544d;
   font-weight: 700;
-  height: 40px;
-  width: 120px;
-  border-radius: 20px;
+  min-height: 40px;
+  min-width: 120px;
+  border-radius: 2rem;
   cursor: pointer;
   border: none;
 }
@@ -69,10 +68,11 @@
 .parrafo {
   font-family: "Rubik", sans-serif;
   font-weight: 300;
+  font-size: clamp(1.3rem, 0.5rem + 5vw, 1.3rem);
 }
 
 .linkedin {
-  height: 20px;
+  max-height: 30px;
   background-color: #868686;
   border-radius: 100%;
   padding: 8px;
@@ -83,7 +83,7 @@
 }
 
 .github {
-  height: 20px;
+  max-height: 30px;
   background-color: #868686;
   border-radius: 100%;
   padding: 8px;
@@ -92,4 +92,8 @@
 
 .github:hover {
   background-color: #66625c;
+}
+
+.links {
+  display: flex;
 }

@@ -22,7 +22,8 @@ export default function LandingPage() {
             <button className={styles.button}>Let's go !</button>
           </Link>
         </div>
-        <div>
+
+        <div className={styles.links}>
           <a
             href="https://www.linkedin.com/in/lourdeslopezpepa/"
             target="_blank"
