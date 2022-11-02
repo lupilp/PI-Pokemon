@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 23rem;
+  max-height: 23rem;
   width: 16rem;
   justify-content: space-evenly;
   text-decoration: none;
