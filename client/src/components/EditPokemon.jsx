@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { editPokemon, getDetail, getTypes } from "../actions";
+import { editPokemon, getDetail, getPokemons, getTypes } from "../actions";
 
 import styles from "../styles/Edit.module.css";
 import ash from "../styles/Images/ash2.png";
@@ -140,6 +140,7 @@ function EditPokemon() {
     });
     history.push(`/pokemons/${id}`);
     dispatch(getDetail(id));
+    dispatch(getPokemons());
   };
 
   return (
