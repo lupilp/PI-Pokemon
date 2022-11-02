@@ -72,13 +72,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin: 30px;
+  height: 100%;
+  width: 100%;
 }
 
 .contRed {
   display: flex;
   background-color: #eb544d;
-  padding: 15px;
+  padding: 1rem;
   justify-content: center;
   align-items: center;
   border-radius: 60px;

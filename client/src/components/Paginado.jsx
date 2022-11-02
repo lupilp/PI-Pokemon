@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "./Card";
 import styles from "../styles/Paginado.module.css";
-import { clearHome, setCurrentPage } from "../actions";
+import { setCurrentPage } from "../actions";
 import izq from "../styles/Images/chevron-left.png";
 import der from "../styles/Images/chevron-right.png";
 import pokeball from "../styles/Gifs/pokeball.gif";

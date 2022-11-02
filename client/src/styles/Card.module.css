@@ -5,8 +5,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: 350px;
-  width: 15%;
+  min-height: 23rem;
+  width: 16rem;
   justify-content: space-evenly;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
@@ -15,13 +15,12 @@
 }
 
 .contCard .img {
-  width: 50%;
+  max-width: 50%;
 }
 
 .name {
   font-family: "Rubik", sans-serif;
   font-weight: 600;
-  /* font-size: clamp(1rem, 2vw, 2rem); */
   font-size: 1.7em;
   color: #66625c;
 }
@@ -47,4 +46,12 @@
 
 .contCard:hover {
   transform: scale(1.03);
+}
+
+@media screen and (max-width: 600px) {
+  .contCard {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+  }
 }

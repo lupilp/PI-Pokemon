@@ -3,7 +3,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 1.2rem;
+  padding: 0.5rem;
 }
 
 .pageNumbers {
@@ -11,14 +12,13 @@
   display: flex;
   justify-content: center;
   color: #66625c;
-  padding: 20px;
+  padding: 3rem;
 }
 
 .pageNumbers li {
-  /* padding: 10px; */
   cursor: pointer;
-  height: 30px;
-  width: 30px;
+  height: 2rem;
+  width: 2rem;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -37,7 +37,6 @@
   color: #66625c;
   font-size: 1rem;
   cursor: pointer;
-  /* border: 1px solid black; */
   display: flex;
   padding: 5px;
   border-radius: 50%;
@@ -53,5 +52,5 @@
 }
 
 .pokeball {
-  height: 200px;
+  height: 100%;
 }
