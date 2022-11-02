@@ -63,6 +63,12 @@
   padding: 0.5rem;
 }
 
+.contHome {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   max-width: 170px;
   margin-left: 10px;

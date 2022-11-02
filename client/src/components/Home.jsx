@@ -81,72 +81,71 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div className={styles.navBar}>
-        <div className={styles.navIzq}>
-          <Link to="/">
-            <img src={logo} alt="logo" className={styles.logo}></img>
-          </Link>
+    <div className={styles.contHome}>
+      <div>
+        <div className={styles.navBar}>
+          <div className={styles.navIzq}>
+            <Link to="/">
+              <img src={logo} alt="logo" className={styles.logo}></img>
+            </Link>
+          </div>
+          <SearchBar></SearchBar>
+
+          <div className={styles.navDer}>
+            <Link to="/pokemons">
+              <img src={plus} alt="plus" className={styles.plus}></img>
+            </Link>
+
+            <button
+              onClick={(e) => {
+                handleClick(e);
+              }}
+              className={styles.buttonRec}
+            >
+              <img
+                src={recargar}
+                alt="recargar"
+                className={styles.recargar}
+              ></img>
+            </button>
+          </div>
         </div>
-        <SearchBar></SearchBar>
 
-        <div className={styles.navDer}>
-          <Link to="/pokemons">
-            <img src={plus} alt="plus" className={styles.plus}></img>
-          </Link>
+        <div className={styles.filters}>
+          <select onChange={(e) => handleOrder(e)} className={styles.order}>
+            <option value="default">Order</option>
+            <option value="asc">Sort A-Z</option>
+            <option value="desc">Sort Z-A</option>
+            <option value="fue">Strong</option>
+            <option value="deb">Weak</option>
+          </select>
 
-          <button
-            onClick={(e) => {
-              handleClick(e);
-            }}
-            className={styles.buttonRec}
+          <select
+            onChange={(e) => handleFilterCreated(e)}
+            className={styles.created}
           >
-            <img
-              src={recargar}
-              alt="recargar"
-              className={styles.recargar}
-            ></img>
-          </button>
+            <option value="all">All</option>
+            <option value="existing">Existing</option>
+            <option value="created">Created</option>
+          </select>
+
+          <select
+            onChange={(e) => handleFilterType(e)}
+            className={styles.types}
+          >
+            <option value="all">All</option>
+            {allTypes.map((t) => {
+              return (
+                <option value={t.name} key={t.name}>
+                  {t.name[0].toUpperCase() + t.name.slice(1)}
+                </option>
+              );
+            })}
+          </select>
         </div>
       </div>
 
-      <div className={styles.filters}>
-        <select onChange={(e) => handleOrder(e)} className={styles.order}>
-          <option value="default">Order</option>
-          <option value="asc">Sort A-Z</option>
-          <option value="desc">Sort Z-A</option>
-          <option value="fue">Strong</option>
-          <option value="deb">Weak</option>
-        </select>
-
-        <select
-          onChange={(e) => handleFilterCreated(e)}
-          className={styles.created}
-        >
-          <option value="all">All</option>
-          <option value="existing">Existing</option>
-          <option value="created">Created</option>
-        </select>
-
-        <select onChange={(e) => handleFilterType(e)} className={styles.types}>
-          <option value="all">All</option>
-          {allTypes.map((t) => {
-            return (
-              <option value={t.name} key={t.name}>
-                {t.name[0].toUpperCase() + t.name.slice(1)}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-
-      {error ? (
-        <Error></Error>
-      ) : (
-        <div>
-          <Paginado></Paginado>
-        </div>
-      )}
+      {error ? <Error></Error> : <Paginado></Paginado>}
     </div>
   );
 }
