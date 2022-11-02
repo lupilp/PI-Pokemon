@@ -2,16 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-<<<<<<< Updated upstream
-  align-items: center;
-  gap: 1.2rem;
-  padding: 0.5rem;
-=======
   /* align-items: center; */
   /* gap: 20px; */
   flex-grow: 1;
   padding-inline: 0.5rem;
->>>>>>> Stashed changes
 }
 
 .pageNumbers {
